@@ -1,0 +1,20 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  datasource:
+    password: ok
+    username: root
+    url: jdbc:mysql://localhost:3306/mall
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  configuration:
+    auto-mapping-behavior: full
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info
+    com.kgc.mapper: debug
+  config: classpath:lombok-spring.xml
