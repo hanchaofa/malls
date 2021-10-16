@@ -12,6 +12,6 @@ public class TestController {
         //vjhggjg
         System.out.println("testss");
         model.addAttribute("","");
-        return "page/admin/loginPage";
+        return "page/fore/homePage";
     }
 }
