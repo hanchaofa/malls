@@ -48,27 +48,4 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     public List<Productorder> getOrderListByStatus(Integer productorderStatus, Integer productorderUserId) {
         return null;
     }
-
-    /**
-     * 商品业务（实现类）
-     */
-    @Service
-    public static class ProductServiceImpl implements ProductService {
-        // 在此注入ProductMapper
-
-        @Override
-        public List<Product> searchProductList(String productName) {
-            return null;
-        }
-
-        @Override
-        public List<Product> getProductListByCategory(Integer productCategoryId) {
-            return null;
-        }
-
-        @Override
-        public Product getProductById(Integer id) {
-            return null;
-        }
-    }
 }
