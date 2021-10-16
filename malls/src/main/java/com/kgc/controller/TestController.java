@@ -9,7 +9,6 @@ public class TestController {
     @RequestMapping("/login")
     public String getshiw(Model model){
         System.out.println("test wang");
-        model.addAttribute("","");
-        return "page/admin/loginPage";
+        return "page/fore/orderListPage";
     }
 }
