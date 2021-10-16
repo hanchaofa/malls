@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -21,20 +21,21 @@
                 //封装数据
                 dataList.categoryName = encodeURI(categoryName);
 
-                getData($(this), contextPath+"/admin/category/0/10", dataList);
+                getData($(this), contextPath + "/admin/category/0/10", dataList);
             });
             //点击刷新按钮时
             $("#btn_category_refresh").click(function () {
                 //清除数据
                 dataList.categoryName = null;
                 //获取数据
-                getData($(this), contextPath+"/admin/category/0/10", null);
+                getData($(this), contextPath + "/admin/category/0/10", null);
             });
             //点击table中的数据时
             $("#table_category_list").find(">tbody>tr").click(function () {
                 trDataStyle($(this));
             });
         });
+
         //获取分类数据
         function getData(object, url, dataObject) {
             var table = $("#table_category_list");
@@ -47,11 +48,11 @@
                     //清空原有数据
                     tbody.empty();
                     //设置样式
-                    $(".loader").css("display","none");
-                    object.attr("disabled",false);
+                    $(".loader").css("display", "none");
+                    object.attr("disabled", false);
                     //显示分类统计数据
                     $("#category_count_data").text(data.categoryCount);
-                    if(data.categoryList.length > 0) {
+                    if (data.categoryList.length > 0) {
                         for (var i = 0; i < data.categoryList.length; i++) {
                             var categoryId = data.categoryList[i].categoryId;
                             var categoryName = data.categoryList[i].categoryName;
@@ -74,7 +75,7 @@
                 },
                 beforeSend: function () {
                     $(".loader").css("display", "block");
-                    object.attr("disabled",true);
+                    object.attr("disabled", true);
                 },
                 error: function () {
 
@@ -103,7 +104,7 @@
 
         //获取页码数据
         function getPage(index) {
-            getData($(this), contextPath+"/admin/category/" + index + "/10", dataList);
+            getData($(this), contextPath + "/admin/category/" + index + "/10", dataList);
         }
     </script>
 </head>
@@ -148,7 +149,8 @@
         <tbody>
         <c:forEach items="${requestScope.categoryList}" var="category">
             <tr>
-                <td><input type="checkbox" class="cbx_select" id="cbx_category_select_${category.categoryId}"><label for="cbx_category_select_${category.categoryId}"></label></td>
+                <td><input type="checkbox" class="cbx_select" id="cbx_category_select_${category.categoryId}"><label
+                        for="cbx_category_select_${category.categoryId}"></label></td>
                 <td title="${category.categoryName}">${category.categoryName}</td>
                 <td><span class="td_special" title="查看分类详情"><a href="javascript:void(0)"
                                                                onclick="getChildPage(this)">详情</a></span></td>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -9,7 +9,7 @@
 <head>
     <script>
         $(function () {
-            if($("#details_product_id").val() === ""){
+            if ($("#details_product_id").val() === "") {
                 //刷新下拉框
                 $('#select_product_category').selectpicker('refresh');
 
@@ -27,27 +27,27 @@
 
                     //校验数据合法性
                     var yn = true;
-                    if(productIsEnabled === undefined){
-                        styleUtil.errorShow($("#text_productState_details_msg"),"请选择产品状态！");
+                    if (productIsEnabled === undefined) {
+                        styleUtil.errorShow($("#text_productState_details_msg"), "请选择产品状态！");
                         yn = false;
                     }
-                    if(productName === ""){
+                    if (productName === "") {
                         styleUtil.basicErrorShow($("#lbl_product_name"));
                         yn = false;
                     }
-                    if(productTitle === ""){
+                    if (productTitle === "") {
                         styleUtil.basicErrorShow($("#lbl_product_title"));
                         yn = false;
                     }
-                    if(productPrice === "" || isNaN(productPrice)){
+                    if (productPrice === "" || isNaN(productPrice)) {
                         styleUtil.basicErrorShow($("#lbl_product_price"));
                         yn = false;
                     }
-                    if(productSalePrice === "" || isNaN(productSalePrice)){
+                    if (productSalePrice === "" || isNaN(productSalePrice)) {
                         styleUtil.basicErrorShow($("#lbl_product_sale_price"));
                         yn = false;
                     }
-                    if(!yn){
+                    if (!yn) {
                         return;
                     }
 
@@ -81,7 +81,7 @@
                     //数据集
                     var dataList = {
                         "productCategoryId": productCategoryId,
-                        "productIsEnabled" : productIsEnabled,
+                        "productIsEnabled": productIsEnabled,
                         "productName": productName,
                         "productTitle": productTitle,
                         "productPrice": productPrice,
@@ -94,14 +94,14 @@
                 });
             } else {
                 //设置产品种类值
-                $('#select_product_category').selectpicker('val','${requestScope.product.productCategory.categoryId}');
+                $('#select_product_category').selectpicker('val', '${requestScope.product.productCategory.categoryId}');
                 //设置产品状态
                 var productIsEnabled = '${requestScope.product.productIsEnabled}';
                 $("input[name='radio_product_isEnabled']").each(function () {
-                    if($(this).val() === productIsEnabled){
-                        $(this).prop("checked",true);
-                        if($(this).val() === "1"){
-                            $("#text_productState_details_msg").text("提示：产品停售时无法进行交易").attr("title","提示：产品停售时无法进行交易").css("left",0).css("opacity","1");
+                    if ($(this).val() === productIsEnabled) {
+                        $(this).prop("checked", true);
+                        if ($(this).val() === "1") {
+                            $("#text_productState_details_msg").text("提示：产品停售时无法进行交易").attr("title", "提示：产品停售时无法进行交易").css("left", 0).css("opacity", "1");
                         }
                         return false;
                     }
@@ -111,8 +111,8 @@
                 //设置产品创建日期
                 $("#span_product_create_date").text('${requestScope.product.productCreateDate}');
                 //判断文件是否允许上传
-                checkFileUpload($("#product_single_list"),5);
-                checkFileUpload($("#product_details_list"),8);
+                checkFileUpload($("#product_single_list"), 5);
+                checkFileUpload($("#product_details_list"), 8);
                 //原属性值Map
                 var propertyMap = {};
                 $("input[id^='input_product_property'][data-pvid]").each(function () {
@@ -222,7 +222,7 @@
              * event
              ******/
             //单击图片列表项时
-            $(".details_picList").on("click","li:not(.details_picList_fileUpload)",function () {
+            $(".details_picList").on("click", "li:not(.details_picList_fileUpload)", function () {
                 var img = $(this);
                 var productImageId = img.children("img").attr("name");
                 var fileUploadInput = $(this).parents("ul").children(".details_picList_fileUpload");
@@ -263,8 +263,8 @@
             });
             //改变产品状态时
             $('input:radio').click(function () {
-                if($(this).val() === "1"){
-                    styleUtil.errorShow($("#text_productState_details_msg"),"提示：产品停售时无法进行交易");
+                if ($(this).val() === "1") {
+                    styleUtil.errorShow($("#text_productState_details_msg"), "提示：产品停售时无法进行交易");
                 } else {
                     styleUtil.errorHide($("#text_productState_details_msg"));
                 }
@@ -276,7 +276,7 @@
             //更改产品类型列表时
             $("#select_product_category").change(function () {
                 $.ajax({
-                    url: "admin/property/type/"+$(this).val(),
+                    url: "admin/property/type/" + $(this).val(),
                     type: "get",
                     data: null,
                     success: function (data) {
@@ -285,13 +285,13 @@
                         var listDiv = $(".details_property_list");
                         listDiv.empty().append("<span class='details_title text_info'>属性值信息</span>");
                         //显示产品属性数据
-                        if(data.propertyList.length > 0){
-                            for(var i = 0;i<data.propertyList.length;i++){
+                        if (data.propertyList.length > 0) {
+                            for (var i = 0; i < data.propertyList.length; i++) {
                                 var propertyId = data.propertyList[i].propertyId;
                                 var propertyName = data.propertyList[i].propertyName;
-                                if(data.propertyList[i+1] !== undefined){
-                                    var nextPropertyId = data.propertyList[i+1].propertyId;
-                                    var nextPropertyName = data.propertyList[i+1].propertyName;
+                                if (data.propertyList[i + 1] !== undefined) {
+                                    var nextPropertyId = data.propertyList[i + 1].propertyId;
+                                    var nextPropertyName = data.propertyList[i + 1].propertyName;
                                     i++;
                                     listDiv.append("<label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + propertyId + "' for='input_product_property_" + propertyId + "'>" + propertyName + "</label><input class='frm_input' id='input_product_property_" + propertyId + "' type='text' maxlength='50'/><label class='frm_label lbl_property_name text_info' id='lbl_product_property_" + nextPropertyId + "' for='input_product_property_" + nextPropertyId + "'>" + nextPropertyName + "</label><input class='frm_input' id='input_product_property_" + nextPropertyId + "' type='text' maxlength='50'/><div class='br'></div>");
                                 } else {
@@ -383,10 +383,10 @@
 
         //判断是否允许上传文件
         function checkFileUpload(obj, size) {
-            if(obj.children("li:not(.details_picList_fileUpload,:hidden)").length>=size){
-                obj.children(".details_picList_fileUpload").css("display","none");
+            if (obj.children("li:not(.details_picList_fileUpload,:hidden)").length >= size) {
+                obj.children(".details_picList_fileUpload").css("display", "none");
             } else {
-                obj.children(".details_picList_fileUpload").css("display","inline-block");
+                obj.children(".details_picList_fileUpload").css("display", "inline-block");
             }
         }
 
@@ -421,16 +421,19 @@
         }
     </script>
     <style rel="stylesheet">
-        .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+        .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
             margin: 0 130px 0 0;
         }
-        .frm_input{
+
+        .frm_input {
             margin-right: 130px;
         }
-        .frm_error_msg{
-            white-space:nowrap;
+
+        .frm_error_msg {
+            white-space: nowrap;
         }
-        .warn_height{
+
+        .warn_height {
             max-height: 25px;
         }
 
@@ -455,11 +458,14 @@
         </select>
         <label class="frm_label text_info" id="lbl_product_isEnabled" for="radio_product_isEnabled_true">产品状态</label>
         <input id="radio_product_isEnabled_true" name="radio_product_isEnabled" type="radio" value="0" checked>
-        <label class="frm_label text_info" id="lbl_product_isEnabled_true" for="radio_product_isEnabled_true">销售中</label>
+        <label class="frm_label text_info" id="lbl_product_isEnabled_true"
+               for="radio_product_isEnabled_true">销售中</label>
         <input id="radio_product_isEnabled_false" name="radio_product_isEnabled" type="radio" value="1">
-        <label class="frm_label text_info" id="lbl_product_isEnabled_false" for="radio_product_isEnabled_false">停售中</label>
+        <label class="frm_label text_info" id="lbl_product_isEnabled_false"
+               for="radio_product_isEnabled_false">停售中</label>
         <input id="radio_product_isEnabled_special" name="radio_product_isEnabled" type="radio" value="2">
-        <label class="frm_label text_info" id="lbl_product_isEnabled_special" for="radio_product_isEnabled_special">促销中</label>
+        <label class="frm_label text_info" id="lbl_product_isEnabled_special"
+               for="radio_product_isEnabled_special">促销中</label>
         <span class="frm_error_msg" id="text_productState_details_msg"></span>
     </div>
 </div>
@@ -473,16 +479,20 @@
     </div>
     <div class="frm_div">
         <label class="frm_label text_info" id="lbl_product_name" for="input_product_name">产品名称</label>
-        <input class="frm_input" id="input_product_name" type="text" maxlength="50" value="${requestScope.product.productName}"/>
+        <input class="frm_input" id="input_product_name" type="text" maxlength="50"
+               value="${requestScope.product.productName}"/>
         <label class="frm_label text_info" id="lbl_product_title" for="input_product_title">产品标题</label>
-        <input class="frm_input" id="input_product_title" type="text" maxlength="50" value="${requestScope.product.productTitle}"/>
+        <input class="frm_input" id="input_product_title" type="text" maxlength="50"
+               value="${requestScope.product.productTitle}"/>
     </div>
     <div class="frm_div_last">
         <label class="frm_label text_info" id="lbl_product_price" for="input_product_price">产品原价</label>
-        <input class="frm_input details_unit"  id="input_product_price" type="text" maxlength="10" value="${requestScope.product.productPrice}"/>
+        <input class="frm_input details_unit" id="input_product_price" type="text" maxlength="10"
+               value="${requestScope.product.productPrice}"/>
         <span class="details_unit text_info">元</span>
         <label class="frm_label text_info" id="lbl_product_sale_price" for="input_product_sale_price">产品促销价</label>
-        <input class="frm_input details_unit"  id="input_product_sale_price" type="text" maxlength="10" value="${requestScope.product.productSalePrice}"/>
+        <input class="frm_input details_unit" id="input_product_sale_price" type="text" maxlength="10"
+               value="${requestScope.product.productSalePrice}"/>
         <span class="details_unit text_info">元</span>
     </div>
 </div>
@@ -496,9 +506,12 @@
                     name="${image.productImageId}"/></li>
         </c:forEach>
         <li class="details_picList_fileUpload">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1528"  width="40" height="40">
-                <path d="M0 512C0 229.230208 229.805588 0 512 0 794.769792 0 1024 229.805588 1024 512 1024 794.769792 794.194412 1024 512 1024 229.230208 1024 0 794.194412 0 512Z" p-id="1529" fill="#FF7874"></path>
-                <path d="M753.301333 490.666667l-219.946667 0L533.354667 270.741333c0-11.776-9.557333-21.333333-21.354667-21.333333-11.776 0-21.333333 9.536-21.333333 21.333333L490.666667 490.666667 270.72 490.666667c-11.776 0-21.333333 9.557333-21.333333 21.333333 0 11.797333 9.557333 21.354667 21.333333 21.354667L490.666667 533.354667l0 219.904c0 11.861333 9.536 21.376 21.333333 21.376 11.797333 0 21.354667-9.578667 21.354667-21.333333l0-219.946667 219.946667 0c11.754667 0 21.333333-9.557333 21.333333-21.354667C774.634667 500.224 765.077333 490.666667 753.301333 490.666667z" p-id="1530" fill="#FFFFFF"></path>
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1528"
+                 width="40" height="40">
+                <path d="M0 512C0 229.230208 229.805588 0 512 0 794.769792 0 1024 229.805588 1024 512 1024 794.769792 794.194412 1024 512 1024 229.230208 1024 0 794.194412 0 512Z"
+                      p-id="1529" fill="#FF7874"></path>
+                <path d="M753.301333 490.666667l-219.946667 0L533.354667 270.741333c0-11.776-9.557333-21.333333-21.354667-21.333333-11.776 0-21.333333 9.536-21.333333 21.333333L490.666667 490.666667 270.72 490.666667c-11.776 0-21.333333 9.557333-21.333333 21.333333 0 11.797333 9.557333 21.354667 21.333333 21.354667L490.666667 533.354667l0 219.904c0 11.861333 9.536 21.376 21.333333 21.376 11.797333 0 21.354667-9.578667 21.354667-21.333333l0-219.946667 219.946667 0c11.754667 0 21.333333-9.557333 21.333333-21.354667C774.634667 500.224 765.077333 490.666667 753.301333 490.666667z"
+                      p-id="1530" fill="#FFFFFF"></path>
             </svg>
             <span>点击上传</span>
             <input type="file" onchange="uploadImage(this)" accept="image/*">
@@ -515,16 +528,19 @@
                     name="${image.productImageId}"/></li>
         </c:forEach>
         <li class="details_picList_fileUpload">
-            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1528"  width="40" height="40">
-                <path d="M0 512C0 229.230208 229.805588 0 512 0 794.769792 0 1024 229.805588 1024 512 1024 794.769792 794.194412 1024 512 1024 229.230208 1024 0 794.194412 0 512Z" p-id="1529" fill="#FF7874"></path>
-                <path d="M753.301333 490.666667l-219.946667 0L533.354667 270.741333c0-11.776-9.557333-21.333333-21.354667-21.333333-11.776 0-21.333333 9.536-21.333333 21.333333L490.666667 490.666667 270.72 490.666667c-11.776 0-21.333333 9.557333-21.333333 21.333333 0 11.797333 9.557333 21.354667 21.333333 21.354667L490.666667 533.354667l0 219.904c0 11.861333 9.536 21.376 21.333333 21.376 11.797333 0 21.354667-9.578667 21.354667-21.333333l0-219.946667 219.946667 0c11.754667 0 21.333333-9.557333 21.333333-21.354667C774.634667 500.224 765.077333 490.666667 753.301333 490.666667z" p-id="1530" fill="#FFFFFF"></path>
+            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1528"
+                 width="40" height="40">
+                <path d="M0 512C0 229.230208 229.805588 0 512 0 794.769792 0 1024 229.805588 1024 512 1024 794.769792 794.194412 1024 512 1024 229.230208 1024 0 794.194412 0 512Z"
+                      p-id="1529" fill="#FF7874"></path>
+                <path d="M753.301333 490.666667l-219.946667 0L533.354667 270.741333c0-11.776-9.557333-21.333333-21.354667-21.333333-11.776 0-21.333333 9.536-21.333333 21.333333L490.666667 490.666667 270.72 490.666667c-11.776 0-21.333333 9.557333-21.333333 21.333333 0 11.797333 9.557333 21.354667 21.333333 21.354667L490.666667 533.354667l0 219.904c0 11.861333 9.536 21.376 21.333333 21.376 11.797333 0 21.354667-9.578667 21.354667-21.333333l0-219.946667 219.946667 0c11.754667 0 21.333333-9.557333 21.333333-21.354667C774.634667 500.224 765.077333 490.666667 753.301333 490.666667z"
+                      p-id="1530" fill="#FFFFFF"></path>
             </svg>
             <span>点击上传</span>
             <input type="file" onchange="uploadImage(this)" accept="image/*" class="product_details_image_list">
         </li>
     </ul>
 </div>
-<div class="details_div details_div_last details_property_list" >
+<div class="details_div details_div_last details_property_list">
     <span class="details_title text_info">属性值信息</span>
     <c:forEach items="${requestScope.propertyList}" var="property" varStatus="status">
         <c:choose>
@@ -573,7 +589,8 @@
 </div>
 
 <%-- 模态框 --%>
-<div class="modal fade" id="modalDiv" tabindex="-1" role="dialog" aria-labelledby="modalDiv" aria-hidden="true" data-backdrop="static">
+<div class="modal fade" id="modalDiv" tabindex="-1" role="dialog" aria-labelledby="modalDiv" aria-hidden="true"
+     data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -118,8 +118,6 @@ function down(obj) {
     //ajax
 
 
-
-
 }
 
 function sumPrice() {

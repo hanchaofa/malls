@@ -74,12 +74,12 @@
         "color": "#666666"
       }
     }
-    },
+  },
   "legend": {
     "textStyle": {
       "color": "#666"
     }
-    },
+  },
   "valueAxis": {
     "axisLine": {
       "show": true,

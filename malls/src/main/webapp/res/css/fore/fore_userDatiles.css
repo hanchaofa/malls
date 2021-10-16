@@ -44,35 +44,40 @@ nav {
 }
 
 .content {
-    color:#333;
+    color: #333;
     position: relative;
     width: 1190px;
     min-height: 550px;
     font-family: Arial, serif;
     margin: 40px auto;
 }
- .mt-menu {
-     float: left;
-     min-height:500px ;
-     margin-right: 20px;
+
+.mt-menu {
+    float: left;
+    min-height: 500px;
+    margin-right: 20px;
 }
- .mt-avatar img{
-     width: 100px;
-     height: 100px;
-     vertical-align:middle;
- }
+
+.mt-avatar img {
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+}
+
 .mt-menu-tree {
     padding-top: 10px;
     text-align: center;
     font-size: 12px;
     color: #666;
 }
+
 .sns-tab {
     height: 35px;
     line-height: 35px;
     border-bottom: 1px solid #cccccc;
 }
-.sns-tab span{
+
+.sns-tab span {
     margin-left: 10px;
     font-size: 14px;
     font-weight: bolder;
@@ -81,21 +86,26 @@ nav {
 .sns-main {
     margin: 35px;
 }
-#profile{
+
+#profile {
     min-width: 860px;
     float: left;
     border: 1px solid #ccc;
 }
-#content_info{
-    min-height:600px;
+
+#content_info {
+    min-height: 600px;
     margin: 20px auto 0;
 }
+
 #tips-box {
     font-size: 15px;
 }
-#form_radion{
+
+#form_radion {
     font-size: 10px;
 }
+
 .form-item {
     padding: 10px 0;
     line-height: 5px;
@@ -104,6 +114,7 @@ nav {
     font-size: 12px;
     text-align: left;
 }
+
 .form-label {
     float: left;
     font-size: 13px;
@@ -114,16 +125,19 @@ nav {
     margin-left: 0;
     padding-right: 10px;
 }
-.tsls{
+
+.tsls {
     float: left;
     min-width: 90px;
     line-height: 37px;
     text-align: right;
     font-weight: bolder;
 }
+
 .err-input {
     border-color: #cccccc;
 }
+
 .form-text {
     border: 1px solid #ccc;
     width: 240px;
@@ -133,7 +147,8 @@ nav {
     font-size: 14px;
     _margin-left: -3px;
 }
-.form_span{
+
+.form_span {
     display: none;
     padding-left: 15px;
     font-size: 12px;
@@ -144,11 +159,13 @@ input[type=radio] {
     margin: 10px 0 0 10px;
     cursor: pointer;
 }
+
 .last-item {
     border-bottom: 1px solid #cccccc;
 
 }
-.font_we{
+
+.font_we {
     font-size: 14px;
     font-family: Arial, serif;
     color: #333333;
@@ -189,13 +206,13 @@ input[type=radio] {
     width: 140px;
 }
 
-.steps{
+.steps {
     height: 46px;
     border-bottom: 2px solid #e6e6e6;
     position: relative;
 }
 
-.steps_tsl{
+.steps_tsl {
     color: #3e3e3e;
     font-size: 16px;
     font-weight: 700;
@@ -210,6 +227,7 @@ input[type=radio] {
 .btn-large {
     min-width: 140px;
 }
+
 .btns {
     height: 36px;
     padding: 0 20px;
@@ -224,11 +242,10 @@ input[type=radio] {
     margin-top: 20px;
 }
 
-.form-item img{
+.form-item img {
     width: 100px;
     height: 100px;
 }
-
 
 .details_picList {
     font-size: 0;
@@ -243,7 +260,8 @@ input[type=radio] {
     padding: 1px;
     margin: 0 5px 10px;
 }
-#userProfilePictureSrc{
+
+#userProfilePictureSrc {
     vertical-align: middle;
     display: inline-block;
     position: relative;
@@ -252,7 +270,7 @@ input[type=radio] {
     width: 100px;
     height: 100px;
     border-radius: 5px;
-   cursor: pointer;
+    cursor: pointer;
     z-index: 999;
 }
 

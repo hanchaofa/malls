@@ -7,7 +7,7 @@ $(function () {
     $('#select_user_address_province').change(function () {
         $.ajax({
             type: "GET",
-            url: contextPath+"/address/" + $(this).val(),
+            url: contextPath + "/address/" + $(this).val(),
             data: null,
             dataType: "json",
             success: function (data) {
@@ -46,7 +46,7 @@ $(function () {
     $("#select_user_address_city").change(function () {
         $.ajax({
             type: "GET",
-            url: contextPath+"/address/" + $(this).val(),
+            url: contextPath + "/address/" + $(this).val(),
             data: null,
             dataType: "json",
             success: function (data) {
@@ -165,7 +165,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",
-            url: contextPath+"/register/doRegister",
+            url: contextPath + "/register/doRegister",
             data: {
                 "userName": userName,
                 "userPassword": userPassword,
@@ -183,7 +183,7 @@ $(function () {
                         $(".msg").animate({
                             opacity: 0
                         }, 1500, function () {
-                            location.href = contextPath+"/login";
+                            location.href = contextPath + "/login";
                         });
                     });
                 } else {

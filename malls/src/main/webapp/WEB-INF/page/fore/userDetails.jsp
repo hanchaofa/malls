@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="include/header.jsp" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -64,7 +64,7 @@
             <div id="tips-box">
                 <label class="font_we">亲爱的</label>
                 <b>${requestScope.user.userName}</b>，
-                <label  class="font_we">填写真实的资料，有助于好友找到你哦。</label>
+                <label class="font_we">填写真实的资料，有助于好友找到你哦。</label>
             </div>
             <form action="${ctx}/user/update" method="post" id="register_form">
                 <div class="form-item">
@@ -120,7 +120,8 @@
                 </div>
                 <div class="form-item last-item">
                     <label class="form-label tsl">居住地址：</label>
-                    <select class="selectpicker" id="select_user_address_province" data-size="8" data-live-search="true">
+                    <select class="selectpicker" id="select_user_address_province" data-size="8"
+                            data-live-search="true">
                         <c:forEach items="${requestScope.addressList}" var="address" varStatus="i">
                             <option value="${address.addressAreaId}"
                                     <c:if test="${requestScope.addressId==address.addressAreaId}">selected</c:if>>${address.addressName}</option>
@@ -132,7 +133,8 @@
                                     <c:if test="${requestScope.cityAddressId==address.addressAreaId}">selected</c:if>>${address.addressName}</option>
                         </c:forEach>
                     </select>
-                    <select name="userAddress" class="selectpicker" id="select_user_address_district" data-size="8" data-live-search="true">
+                    <select name="userAddress" class="selectpicker" id="select_user_address_district" data-size="8"
+                            data-live-search="true">
                         <c:forEach items="${requestScope.districtList}" var="address" varStatus="i">
                             <option value="${address.addressAreaId}"
                                     <c:if test="${requestScope.districtAddressId==address.addressAreaId}">selected</c:if>>${address.addressName}</option>

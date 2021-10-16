@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     // wdsdads股份计划
     @RequestMapping("/login")
-    public String getshiw(Model model){
+    public String getshiw(Model model) {
         //vjhggjg
         //renbingli
         System.out.println("testss");
-        model.addAttribute("","");
-        return "page/fore/homePage";
+        model.addAttribute("", "");
+        return "page/admin/homePage";
     }
 }

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -29,11 +29,11 @@
                     productOrderStatusArray.push($(this).val());
                 });
                 //校验数据合法性
-                if(isNaN(productOrderCode)){
-                    styleUtil.errorShow($('#text_productOrder_msg'),"订单号输入格式有误！");
+                if (isNaN(productOrderCode)) {
+                    styleUtil.errorShow($('#text_productOrder_msg'), "订单号输入格式有误！");
                     return;
-                } else if(isNaN(productOrderPost)){
-                    styleUtil.errorShow($('#text_productOrder_msg'),"邮政编码输入格式有误！");
+                } else if (isNaN(productOrderPost)) {
+                    styleUtil.errorShow($('#text_productOrder_msg'), "邮政编码输入格式有误！");
                     return;
                 }
                 //封装数据
@@ -55,29 +55,29 @@
                 getData($(this), "admin/order/0/10", null);
                 //清除排序样式
                 var table = $("#table_productOrder_list");
-                table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
-                table.find("th.data_info").attr("data-sort","asc");
+                table.find("span.orderByDesc,span.orderByAsc").css("opacity", "0");
+                table.find("th.data_info").attr("data-sort", "asc");
             });
             //点击th排序时
             $("th.data_info").click(function () {
                 var table = $("#table_productOrder_list");
-                if(table.find(">tbody>tr").length <= 1){
+                if (table.find(">tbody>tr").length <= 1) {
                     return;
                 }
                 //获取排序字段
                 dataList.orderBy = $(this).attr("data-name");
                 //是否倒序排序
-                dataList.isDesc = $(this).attr("data-sort")==="asc";
+                dataList.isDesc = $(this).attr("data-sort") === "asc";
 
                 getData($(this), "admin/order/0/10", dataList);
                 //设置排序
-                table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
-                if(dataList.isDesc){
-                    $(this).attr("data-sort","desc").children(".orderByAsc.orderBySelect").removeClass("orderBySelect").css("opacity","1");
-                    $(this).children(".orderByDesc").addClass("orderBySelect").css("opacity","1");
+                table.find("span.orderByDesc,span.orderByAsc").css("opacity", "0");
+                if (dataList.isDesc) {
+                    $(this).attr("data-sort", "desc").children(".orderByAsc.orderBySelect").removeClass("orderBySelect").css("opacity", "1");
+                    $(this).children(".orderByDesc").addClass("orderBySelect").css("opacity", "1");
                 } else {
-                    $(this).attr("data-sort","asc").children(".orderByDesc.orderBySelect").removeClass("orderBySelect").css("opacity","1");
-                    $(this).children(".orderByAsc").addClass("orderBySelect").css("opacity","1");
+                    $(this).attr("data-sort", "asc").children(".orderByDesc.orderBySelect").removeClass("orderBySelect").css("opacity", "1");
+                    $(this).children(".orderByAsc").addClass("orderBySelect").css("opacity", "1");
                 }
             });
             //点击table中的数据时
@@ -85,8 +85,9 @@
                 trDataStyle($(this));
             });
         });
+
         //获取订单数据
-        function getData(object,url,dataObject) {
+        function getData(object, url, dataObject) {
             var table = $("#table_productOrder_list");
             var tbody = table.children("tbody").first();
             $.ajax({
@@ -98,8 +99,8 @@
                     //清空原有数据
                     tbody.empty();
                     //设置样式
-                    $(".loader").css("display","none");
-                    object.attr("disabled",false);
+                    $(".loader").css("display", "none");
+                    object.attr("disabled", false);
                     //显示订单统计数据
                     $("#productOrder_count_data").text(data.productOrderCount);
                     if (data.productOrderList.length > 0) {
@@ -158,8 +159,8 @@
                     }
                 },
                 beforeSend: function () {
-                    $(".loader").css("display","block");
-                    object.attr("disabled",true);
+                    $(".loader").css("display", "block");
+                    object.attr("disabled", true);
                 },
                 error: function () {
 
@@ -182,7 +183,7 @@
         }
     </script>
     <style rel="stylesheet">
-        #text_productOrder_msg{
+        #text_productOrder_msg {
             margin-left: 10px;
         }
     </style>
@@ -199,16 +200,26 @@
     </div>
     <div class="frm_group">
         <label class="frm_label" id="lbl_productOrder_status" for="checkbox_productOrder_status_waitPay">订单状态</label>
-        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitPay" name="checkbox_productOrder_status" type="checkbox" value="0" checked>
-        <label class="frm_label" id="lbl_productOrder_status_waitPay" for="checkbox_productOrder_status_waitPay" title="等待买家付款">待付款</label>
-        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitDelivery" name="checkbox_productOrder_status" type="checkbox" value="1" checked>
-        <label class="frm_label" id="lbl_productOrder_status_waitDelivery" for="checkbox_productOrder_status_waitDelivery" title="买家已付款，等待卖家发货">待发货</label>
-        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitConfirm" name="checkbox_productOrder_status" type="checkbox" value="2" checked>
-        <label class="frm_label" id="lbl_productOrder_status_waitConfirm" for="checkbox_productOrder_status_waitConfirm" title="卖家已发货，等待买家确认">待确认</label>
-        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_success" name="checkbox_productOrder_status" type="checkbox" value="3" checked>
-        <label class="frm_label" id="lbl_productOrder_status_success" for="checkbox_productOrder_status_success" title="交易成功">交易成功</label>
-        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_close" name="checkbox_productOrder_status" type="checkbox" value="4" checked>
-        <label class="frm_label" id="lbl_productOrder_status_close" for="checkbox_productOrder_status_close" title="交易关闭">交易关闭</label>
+        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitPay"
+               name="checkbox_productOrder_status" type="checkbox" value="0" checked>
+        <label class="frm_label" id="lbl_productOrder_status_waitPay" for="checkbox_productOrder_status_waitPay"
+               title="等待买家付款">待付款</label>
+        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitDelivery"
+               name="checkbox_productOrder_status" type="checkbox" value="1" checked>
+        <label class="frm_label" id="lbl_productOrder_status_waitDelivery"
+               for="checkbox_productOrder_status_waitDelivery" title="买家已付款，等待卖家发货">待发货</label>
+        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_waitConfirm"
+               name="checkbox_productOrder_status" type="checkbox" value="2" checked>
+        <label class="frm_label" id="lbl_productOrder_status_waitConfirm" for="checkbox_productOrder_status_waitConfirm"
+               title="卖家已发货，等待买家确认">待确认</label>
+        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_success"
+               name="checkbox_productOrder_status" type="checkbox" value="3" checked>
+        <label class="frm_label" id="lbl_productOrder_status_success" for="checkbox_productOrder_status_success"
+               title="交易成功">交易成功</label>
+        <input class="frm_radio radio_productOrder_status" id="checkbox_productOrder_status_close"
+               name="checkbox_productOrder_status" type="checkbox" value="4" checked>
+        <label class="frm_label" id="lbl_productOrder_status_close" for="checkbox_productOrder_status_close"
+               title="交易关闭">交易关闭</label>
         <span class="frm_error_msg" id="text_productOrder_msg"></span>
     </div>
     <div class="frm_group_last">
@@ -232,61 +243,64 @@
 </div>
 <div class="table_normal_div">
     <table class="table_normal" id="table_productOrder_list">
-    <thead class="text_info">
-    <tr>
-        <th><input type="checkbox" class="cbx_select" id="cbx_select_all"><label for="cbx_select_all"></label></th>
-        <th class="data_info" data-sort="asc" data-name="productOrderCode">
-            <span>订单号</span>
-            <span class="orderByDesc"></span>
-            <span class="orderByAsc orderBySelect"></span>
-        </th>
-        <th class="data_info" data-sort="asc" data-name="productOrderPost">
-            <span>邮政编码</span>
-            <span class="orderByDesc"></span>
-            <span class="orderByAsc orderBySelect"></span>
-        </th>
-        <th>收货人</th>
-        <th>联系方式</th>
-        <th class="data_info" data-sort="asc" data-name="productOrderStatus">
-            <span>订单状态</span>
-            <span class="orderByDesc"></span>
-            <span class="orderByAsc orderBySelect"></span>
-        </th>
-        <th>操作</th>
-        <th hidden>订单ID</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${requestScope.productOrderList}" var="productOrder">
+        <thead class="text_info">
         <tr>
-            <td><input type="checkbox" class="cbx_select" id="cbx_productOrder_select_${productOrder.productOrderId}"><label for="cbx_productOrder_select_${productOrder.productOrderId}"></label></td>
-            <td title="${productOrder.productOrderCode}">${productOrder.productOrderCode}</td>
-            <td title="${productOrder.productOrderPost}">${productOrder.productOrderPost}</td>
-            <td title="${productOrder.productOrderReceiver}">${productOrder.productOrderReceiver}</td>
-            <td title="${productOrder.productOrderMobile}">${productOrder.productOrderMobile}</td>
-            <td>
-                <c:choose>
-                    <c:when test="${productOrder.productOrderStatus==0}">
-                        <span class="td_await" title="等待买家付款">等待买家付款</span>
-                    </c:when>
-                    <c:when test="${productOrder.productOrderStatus==1}">
-                        <span class="td_warn" title="买家已付款，等待卖家发货">等待卖家发货</span>
-                    </c:when>
-                    <c:when test="${productOrder.productOrderStatus==2}">
-                        <span class="td_wait" title="卖家已发货，等待买家确认">等待买家确认</span>
-                    </c:when>
-                    <c:when test="${productOrder.productOrderStatus==3}">
-                        <span class="td_success" title="交易成功">交易成功</span>
-                    </c:when>
-                    <c:otherwise><span class="td_error" title="交易关闭">交易关闭</span></c:otherwise>
-                </c:choose>
-            </td>
-            <td><span class="td_special" title="查看订单详情"><a href="javascript:void(0)" onclick="getChildPage(this)">详情</a></span>
-            </td>
-            <td hidden class="orderId">${productOrder.productOrderId}</td>
+            <th><input type="checkbox" class="cbx_select" id="cbx_select_all"><label for="cbx_select_all"></label></th>
+            <th class="data_info" data-sort="asc" data-name="productOrderCode">
+                <span>订单号</span>
+                <span class="orderByDesc"></span>
+                <span class="orderByAsc orderBySelect"></span>
+            </th>
+            <th class="data_info" data-sort="asc" data-name="productOrderPost">
+                <span>邮政编码</span>
+                <span class="orderByDesc"></span>
+                <span class="orderByAsc orderBySelect"></span>
+            </th>
+            <th>收货人</th>
+            <th>联系方式</th>
+            <th class="data_info" data-sort="asc" data-name="productOrderStatus">
+                <span>订单状态</span>
+                <span class="orderByDesc"></span>
+                <span class="orderByAsc orderBySelect"></span>
+            </th>
+            <th>操作</th>
+            <th hidden>订单ID</th>
         </tr>
-    </c:forEach>
-    </tbody>
+        </thead>
+        <tbody>
+        <c:forEach items="${requestScope.productOrderList}" var="productOrder">
+            <tr>
+                <td><input type="checkbox" class="cbx_select"
+                           id="cbx_productOrder_select_${productOrder.productOrderId}"><label
+                        for="cbx_productOrder_select_${productOrder.productOrderId}"></label></td>
+                <td title="${productOrder.productOrderCode}">${productOrder.productOrderCode}</td>
+                <td title="${productOrder.productOrderPost}">${productOrder.productOrderPost}</td>
+                <td title="${productOrder.productOrderReceiver}">${productOrder.productOrderReceiver}</td>
+                <td title="${productOrder.productOrderMobile}">${productOrder.productOrderMobile}</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${productOrder.productOrderStatus==0}">
+                            <span class="td_await" title="等待买家付款">等待买家付款</span>
+                        </c:when>
+                        <c:when test="${productOrder.productOrderStatus==1}">
+                            <span class="td_warn" title="买家已付款，等待卖家发货">等待卖家发货</span>
+                        </c:when>
+                        <c:when test="${productOrder.productOrderStatus==2}">
+                            <span class="td_wait" title="卖家已发货，等待买家确认">等待买家确认</span>
+                        </c:when>
+                        <c:when test="${productOrder.productOrderStatus==3}">
+                            <span class="td_success" title="交易成功">交易成功</span>
+                        </c:when>
+                        <c:otherwise><span class="td_error" title="交易关闭">交易关闭</span></c:otherwise>
+                    </c:choose>
+                </td>
+                <td><span class="td_special" title="查看订单详情"><a href="javascript:void(0)"
+                                                               onclick="getChildPage(this)">详情</a></span>
+                </td>
+                <td hidden class="orderId">${productOrder.productOrderId}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
     </table>
     <%@ include file="include/page.jsp" %>
     <div class="loader"></div>

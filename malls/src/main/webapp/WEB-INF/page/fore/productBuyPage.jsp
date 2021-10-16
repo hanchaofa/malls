@@ -166,7 +166,7 @@
             var userMessage = $.trim($("#input_userMessage_1").val());
             var orderItem_product_id = parseInt('${requestScope.orderItemList[0].productOrderItemProduct.productId}');
             var orderItem_number = parseInt('${requestScope.orderItemList[0].productOrderItemNumber}');
-debugger;
+            debugger;
             var yn = true;
             if (productOrderDetailAddress === "") {
                 styleUtil.specialBasicErrorShow($("#label_details_address"));

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="include/header.jsp" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -28,7 +28,7 @@
                     <c:if test="${i.index<9}">
                         <li><a href="${ctx}/product?categoryId=${category.categoryId}"
                                 <c:if
-                                test="${i.index % 2 != 0}"> style="color: #FF0036"</c:if>>${fn:substring(category.categoryName,0,fn:indexOf(category.categoryName,' /'))}</a>
+                                        test="${i.index % 2 != 0}"> style="color: #FF0036"</c:if>>${fn:substring(category.categoryName,0,fn:indexOf(category.categoryName,' /'))}</a>
                         </li>
                     </c:if>
                 </c:forEach>

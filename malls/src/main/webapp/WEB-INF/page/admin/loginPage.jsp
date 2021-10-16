@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="include/header.jsp" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -40,8 +40,10 @@
                  alt="头像" title="头像"
                  onerror="this.src='${ctx}/res/images/admin/loginPage/default_profile_picture-128x128.png'"/>
             <form id="form_login">
-                <input type="text" class="form-control form_control" placeholder="用户名" id="input_username" title="请输入用户名"/>
-                <input type="password" class="form-control form_control" placeholder="密码" id="input_password" title="请输入密码" autocomplete="on">
+                <input type="text" class="form-control form_control" placeholder="用户名" id="input_username"
+                       title="请输入用户名"/>
+                <input type="password" class="form-control form_control" placeholder="密码" id="input_password"
+                       title="请输入密码" autocomplete="on">
                 <span id="txt_error_msg"></span>
                 <input type="button" class="btn btn-danger" id="btn_login" value="登录"/>
             </form>

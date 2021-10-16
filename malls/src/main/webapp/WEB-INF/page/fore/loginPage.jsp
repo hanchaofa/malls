@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="include/header.jsp" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -86,7 +86,7 @@
             <div class="qrcodeFooter">
                 <img src="${ctx}/res/images/fore/WebsiteImage/scan_icon2.png">
                 <p>打开 <a href="https://www.mall.com/wow/portal/act/app-download">手机Mall</a>
-                </br>扫一扫登录</p>
+                    </br>扫一扫登录</p>
             </div>
             <div class="loginLinks">
                 <a href="JavaScript:void(0)" id="pwdLogin">密码登录</a>

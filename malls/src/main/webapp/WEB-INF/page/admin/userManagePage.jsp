@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -43,29 +43,29 @@
                 getData($(this), "admin/user/0/10", null);
                 //清除排序样式
                 var table = $("#table_user_list");
-                table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
-                table.find("th.data_info").attr("data-sort","asc");
+                table.find("span.orderByDesc,span.orderByAsc").css("opacity", "0");
+                table.find("th.data_info").attr("data-sort", "asc");
             });
             //点击th排序时
             $("th.data_info").click(function () {
                 var table = $("#table_user_list");
-                if(table.find(">tbody>tr").length <= 1){
+                if (table.find(">tbody>tr").length <= 1) {
                     return;
                 }
                 //获取排序字段
                 dataList.orderBy = $(this).attr("data-name");
                 //是否倒序排序
-                dataList.isDesc = $(this).attr("data-sort")==="asc";
+                dataList.isDesc = $(this).attr("data-sort") === "asc";
 
                 getData($(this), "admin/user/0/10", dataList);
                 //设置排序
-                table.find("span.orderByDesc,span.orderByAsc").css("opacity","0");
-                if(dataList.isDesc){
-                    $(this).attr("data-sort","desc").children(".orderByAsc.orderBySelect").removeClass("orderBySelect").css("opacity","1");
-                    $(this).children(".orderByDesc").addClass("orderBySelect").css("opacity","1");
+                table.find("span.orderByDesc,span.orderByAsc").css("opacity", "0");
+                if (dataList.isDesc) {
+                    $(this).attr("data-sort", "desc").children(".orderByAsc.orderBySelect").removeClass("orderBySelect").css("opacity", "1");
+                    $(this).children(".orderByDesc").addClass("orderBySelect").css("opacity", "1");
                 } else {
-                    $(this).attr("data-sort","asc").children(".orderByDesc.orderBySelect").removeClass("orderBySelect").css("opacity","1");
-                    $(this).children(".orderByAsc").addClass("orderBySelect").css("opacity","1");
+                    $(this).attr("data-sort", "asc").children(".orderByDesc.orderBySelect").removeClass("orderBySelect").css("opacity", "1");
+                    $(this).children(".orderByAsc").addClass("orderBySelect").css("opacity", "1");
                 }
             });
             //点击table中的数据时
@@ -73,8 +73,9 @@
                 trDataStyle($(this));
             });
         });
+
         //获取用户数据
-        function getData(object,url,dataObject) {
+        function getData(object, url, dataObject) {
             var table = $("#table_user_list");
             var tbody = table.children("tbody").first();
             $.ajax({
@@ -86,8 +87,8 @@
                     //清空原有数据
                     tbody.empty();
                     //设置样式
-                    $(".loader").css("display","none");
-                    object.attr("disabled",false);
+                    $(".loader").css("display", "none");
+                    object.attr("disabled", false);
                     //显示用户统计数据
                     $("#user_count_data").text(data.userCount);
                     if (data.userList.length > 0) {
@@ -121,8 +122,8 @@
                     }
                 },
                 beforeSend: function () {
-                    $(".loader").css("display","block");
-                    object.attr("disabled",true);
+                    $(".loader").css("display", "block");
+                    object.attr("disabled", true);
                 },
                 error: function () {
 
@@ -145,7 +146,7 @@
         }
     </script>
     <style rel="stylesheet">
-        #lbl_user_name,#lbl_user_gender{
+        #lbl_user_name, #lbl_user_gender {
             width: 65px;
         }
     </style>
@@ -160,9 +161,11 @@
     </div>
     <div class="frm_group">
         <label class="frm_label" id="lbl_user_gender" for="checkbox_user_gender_man">用户性别</label>
-        <input class="frm_radio radio_gender" id="checkbox_user_gender_man" name="checkbox_user_gender" type="checkbox" value="0" checked>
+        <input class="frm_radio radio_gender" id="checkbox_user_gender_man" name="checkbox_user_gender" type="checkbox"
+               value="0" checked>
         <label class="frm_label" id="lbl_user_gender_man" for="checkbox_user_gender_man">男</label>
-        <input class="frm_radio radio_gender" id="checkbox_user_gender_woman" name="checkbox_user_gender" type="checkbox" value="1" checked>
+        <input class="frm_radio radio_gender" id="checkbox_user_gender_woman" name="checkbox_user_gender"
+               type="checkbox" value="1" checked>
         <label class="frm_label" id="lbl_user_gender_woman" for="checkbox_user_gender_woman">女</label>
     </div>
     <div class="frm_group_last">
@@ -221,7 +224,8 @@
         <tbody>
         <c:forEach items="${requestScope.userList}" var="user">
             <tr>
-                <td><input type="checkbox" class="cbx_select" id="cbx_user_select_${user.userId}"><label for="cbx_user_select_${user.userId}"></label></td>
+                <td><input type="checkbox" class="cbx_select" id="cbx_user_select_${user.userId}"><label
+                        for="cbx_user_select_${user.userId}"></label></td>
                 <td title="${user.userName}">${user.userName}</td>
                 <td title="${user.userNickName}">${user.userNickName}</td>
                 <td title="${user.userRealName}">${user.userRealName}</td>

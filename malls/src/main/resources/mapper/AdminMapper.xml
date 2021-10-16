@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.mapper.AdminMapper">
+    <select id="getAdmin" resultType="com.kgc.pojo.Admin">
+        select * from admin
+        <where>
+            <if test="adminName!='' and adminName!=null">
+                and adminName=#{adminName}
+            </if>
+            <if test="adminPwd!='' and adminPwd!=null">
+                and adminPwd=#{adminPwd}
+            </if>
+
+            <if test="adminId!='' and adminId!=null">
+                and adminId=#{adminId}
+            </if>
+        </where>
+    </select>
+</mapper>

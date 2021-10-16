@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <script type="text/javascript">
     var contextPath = "${ctx}";
 </script>
@@ -40,7 +40,7 @@
                         "categoryName": categoryName,
                         "categoryImageSrc": categoryImageSrc
                     };
-                    doAction(dataList, contextPath+"/admin/category", "POST");
+                    doAction(dataList, contextPath + "/admin/category", "POST");
                 });
             } else {
                 //设置分类编号
@@ -79,7 +79,7 @@
                         "categoryName": categoryName,
                         "categoryImageSrc": categoryImageSrc
                     };
-                    doAction(dataList, contextPath+"/admin/category/" + categoryId, "PUT");
+                    doAction(dataList, contextPath + "/admin/category/" + categoryId, "PUT");
                 });
             }
 
@@ -137,7 +137,7 @@
             formData.append("file", file);
             //上传图片
             $.ajax({
-                url: contextPath+"/admin/uploadCategoryImage",
+                url: contextPath + "/admin/uploadCategoryImage",
                 type: "post",
                 data: formData,
                 contentType: false,
@@ -175,7 +175,7 @@
                             $('#modalDiv').modal("hide");
                             setTimeout(function () {
                                 //ajax请求页面
-                                ajaxUtil.getPage(contextPath+"category/" + data.categoryId, null, true);
+                                ajaxUtil.getPage(contextPath + "category/" + data.categoryId, null, true);
                             }, 170);
                         });
                         $(".modal-body").text("保存成功！");

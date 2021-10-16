@@ -107,7 +107,7 @@ $(function () {
         if (yn) {
             $.ajax({
                 type: "POST",
-                url: contextPath+"/login/doLogin",
+                url: contextPath + "/login/doLogin",
                 data: {"username": $.trim($("#name").val()), "password": $.trim($("#password").val())},
                 dataType: "json",
                 success: function (data) {
@@ -170,7 +170,7 @@ function SelectorMousemove(e) {
 function getGuessLoveProducts() {
     $.ajax({
         type: "GET",
-        url: contextPath+"/guess/" + $("#tid").val(),
+        url: contextPath + "/guess/" + $("#tid").val(),
         data: {"guessNumber": $("#guessNumber").val()},
         dataType: "json",
         success: function (data) {

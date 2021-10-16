@@ -44,25 +44,28 @@ nav {
 }
 
 .content {
-    color:#000;
+    color: #000;
     position: relative;
     width: 100%;
     min-width: 1190px;
     font-family: Arial, serif;
     margin: auto auto 40px;
 }
+
 .form-list {
     width: 720px;
     margin: 0 auto;
     font-size: 15px;
     padding: 20px 0;
 }
+
 .form-item {
-    padding: 10px 0 10px  100px;
+    padding: 10px 0 10px 100px;
     line-height: 10px;
     zoom: 1;
     clear: both;
 }
+
 .form-label {
     min-width: 100px;
     line-height: 30px;
@@ -80,7 +83,8 @@ nav {
     width: 1190px;
     margin: auto auto -1px;
 }
-.tsls{
+
+.tsls {
     font-weight: bolder;
 }
 
@@ -95,9 +99,11 @@ nav {
     width: 200px;
     text-align: center;
 }
+
 .err-input {
     border-color: #cccccc;
 }
+
 .form-text {
     border: 1px solid #ccc;
     width: 202px;
@@ -111,19 +117,23 @@ nav {
 .form-text:focus {
     transition: border-color 0.5s;
 }
-.form_span{
+
+.form_span {
     display: none;
     padding-left: 15px;
     font-size: 12px;
 }
-#form_radion{
+
+#form_radion {
     line-height: 10px;
     margin: 12px 0 0 10px;
 }
-#form_radions{
+
+#form_radions {
     line-height: 10px;
     margin: 12px 0 0 10px;
 }
+
 /*修改bootstrap-select下拉框样式*/
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 120px;
@@ -161,9 +171,11 @@ nav {
     height: 20px;
     width: 140px;
 }
+
 .btn-large {
     min-width: 140px;
 }
+
 .btns {
     height: 36px;
     padding: 0 20px;
