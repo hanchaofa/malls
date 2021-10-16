@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TestController {
-    // wdsdads
+    // wdsdads股份计划
     @RequestMapping("/login")
     public String getshiw(Model model){
         //vjhggjg
+        //renbingli
         System.out.println("testss");
         model.addAttribute("","");
         return "page/fore/homePage";
