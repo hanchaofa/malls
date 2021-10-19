@@ -9,6 +9,6 @@ public class TestController {
     @RequestMapping("/login")
     public String getshiw(Model model){
         System.out.println("test wang");
-        return "page/fore/orderListPage";
+        return "page/fore/homePage";
     }
 }

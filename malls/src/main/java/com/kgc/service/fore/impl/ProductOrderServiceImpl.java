@@ -1,10 +1,8 @@
 package com.kgc.service.fore.impl;
 
-import com.kgc.pojo.Product;
 import com.kgc.pojo.Productorder;
 import com.kgc.pojo.Review;
 import com.kgc.service.fore.ProductOrderService;
-import com.kgc.service.fore.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +13,8 @@ import java.util.Map;
  */
 @Service
 public class ProductOrderServiceImpl implements ProductOrderService {
+    // 在此注入ProductOrderMapper
+
     @Override
     public boolean addOrder(Productorder productorder, Map<Integer, Integer> productNumList) {
         // 调用订单数据访问层新增方法

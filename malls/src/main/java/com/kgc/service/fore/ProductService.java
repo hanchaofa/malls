@@ -9,6 +9,12 @@ import java.util.List;
  */
 public interface ProductService {
     /**
+     * 查询6条促销商品信息
+     * @return 商品集合
+     */
+    List<Product> getPromotingProductList();
+
+    /**
      * 搜索商品（模糊查询）
      * @param productName 商品名称
      * @return 商品集合
