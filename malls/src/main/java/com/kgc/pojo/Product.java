@@ -15,4 +15,5 @@ public class Product {
     private Integer productCategoryId;
     private Integer productIsEnabled;
     private List<Productimage> singleProductImageList;
+    private Category productCategory;
 }

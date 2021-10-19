@@ -7,12 +7,11 @@ $(function () {
     $('#select_user_address_province').change(function () {
         $.ajax({
             type: "GET",
-            url: contextPath + "/address/" + $(this).val(),
-            data: null,
+            url: contextPath + "/User/address/" + $(this).val(),
             dataType: "json",
             success: function (data) {
                 $(".loader").hide();
-                if (data.success) {
+                if (data.success()) {
                     $("#select_user_address_city").empty();
                     $("#select_user_address_district").empty();
                     for (var i = 0; i < data.addressList.length; i++) {
@@ -38,7 +37,7 @@ $(function () {
                 $(".loader").show();
             },
             error: function () {
-                alert("加载地区信息失败，请刷新页面再试！")
+                alert("加载地区信息失败，czz请刷新页面再试！")
             }
         });
     });
@@ -51,7 +50,7 @@ $(function () {
             dataType: "json",
             success: function (data) {
                 $(".loader").hide();
-                if (data.success) {
+                if (data.success()) {
                     $("#select_user_address_district").empty();
                     for (var i = 0; i < data.addressList.length; i++) {
                         var address_id = data.addressList[i].addressAreaId;
@@ -69,7 +68,7 @@ $(function () {
                 $(".loader").show();
             },
             error: function () {
-                alert("加载地区信息失败，请刷新页面再试！")
+                alert("加载地区信息失败，请刷zxcz新页面再试！")
             }
         });
     });

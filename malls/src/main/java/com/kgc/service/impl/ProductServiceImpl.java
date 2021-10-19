@@ -20,9 +20,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProduct() {
-        return productMapper.getAllProduct();
+    public List<Product> getAllProduct(String productName, Integer productCategoryId) {
+        return productMapper.getAllProduct(productName,productCategoryId);
     }
+
 
     @Override
     public Integer AddProduct(String productName, String productTitle, float productPrice, float productSalePrice, Integer productCategoryId, String productimageSrc, Integer productimageType, Integer productId, Integer propertyValueId, Object... productIsEnabled) {

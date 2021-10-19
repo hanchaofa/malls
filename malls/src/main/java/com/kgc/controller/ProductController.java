@@ -16,12 +16,13 @@ public class ProductController {
     ProductMapper productMapper;
     @RequestMapping("/test")
     public String gettest(){
-        return "/page/fore/homePage";
+        return "/page/fore/register";
     }
     @RequestMapping("/getthings")
-    public String AllProductList(Model model){
-        List<Product> list = productMapper.getAllProduct();
-        model.addAttribute("",list);
-        return "/page/fore/homePage";
+    public String AllProductList(Model model,String productName){
+        List<Product> list = productMapper.getAllProduct(productName,null);
+        model.addAttribute("productList",list);
+        return "/page/fore/productListPage";
     }
+
 }

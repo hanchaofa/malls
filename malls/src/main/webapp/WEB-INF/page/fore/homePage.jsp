@@ -16,7 +16,7 @@
     <div class="header">
         <img src="${ctx}/res/images/fore/WebsiteImage/HomeLogoB.png">
         <div class="mallSearch">
-            <form action="${ctx}/product" method="get">
+            <form action="${ctx}/Product/getthings" method="get">
                 <div class="mallSearch-input">
                     <input class="header_search_input" type="text" name="productName" placeholder="搜索 商品/品牌/店铺"
                            maxlength="50">

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.mapper.AddressMapper">
+<select id="getSheng" resultType="com.kgc.pojo.Address">
+    SELECT * FROM address
+    WHERE addressAreaId=addressRegionId
+</select>
+    <select id="getShi"  resultType="com.kgc.pojo.Address">
+            SELECT * FROM address where  addressRegionId=#{addressRegionId} and  addressAreaId!=addressRegionId
+
+    </select>
+    <select id="getQu" resultType="com.kgc.pojo.Address">
+         SELECT * FROM address where  addressRegionId=#{addressRegionId} and  addressAreaId!=addressRegionId
+    </select>
+</mapper>

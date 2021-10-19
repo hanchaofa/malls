@@ -28,7 +28,13 @@ public interface ProductService {
                                  Integer MaxMon,Integer MinMon,Object...productIsEnabled
     );
 
-    List<Product> getAllProduct();
+    /**
+     * 根据名称、状态、和商品类型进行查询
+     * @param productName
+     * @param productCategoryId
+     * @return
+     */
+    List<Product> getAllProduct(String productName,Integer productCategoryId);
 
 
 
