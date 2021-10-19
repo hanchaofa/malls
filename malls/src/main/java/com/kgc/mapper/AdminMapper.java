@@ -12,5 +12,5 @@ public interface AdminMapper {
      * @return 管理员对象
      */
     Admin getAdmin(Admin admin);
-
+    Integer updateAdmin(Admin admin);
 }

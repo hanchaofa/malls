@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TestController {
-    // wdsdads股份计划
+ /*   // wdsdads股份计划
     @RequestMapping("/login")
     public String getshiw(Model model) {
         //vjhggjg
@@ -15,5 +15,5 @@ public class TestController {
         System.out.println("testss");
         model.addAttribute("", "");
         return "page/admin/homePage";
-    }
+    }*/
 }

@@ -12,10 +12,9 @@ public interface AdminService {
     Admin getLogin(String adminName,String adminPassword);
 
     /**
-     * 修改管理人信息
+     * 修改管理人对象
      * @param admin
-     * @return integer
-     *
+     * @return
      */
     Integer updateAdmin(Admin admin);
 

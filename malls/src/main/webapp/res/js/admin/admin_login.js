@@ -43,7 +43,7 @@ $(function () {
             return;
         }
         $.ajax({
-            url: contextPath + "/admin/login/doLogin",
+            url: contextPath + "/admin/login",
             type: "post",
             data: {"username": username, "password": password},
             success: function (data) {

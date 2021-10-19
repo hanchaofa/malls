@@ -1,14 +1,17 @@
 package com.kgc.service;
 
+import com.kgc.mapper.ProductMapper;
 import com.kgc.pojo.Product;
 import com.kgc.tool.PageUtil;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * 订单层的业务逻辑层方法
  */
 public interface ProductService {
+
     /**
      * 产品页面的分页
      * @param pageIndex
@@ -25,6 +28,7 @@ public interface ProductService {
                                  Integer MaxMon,Integer MinMon,Object...productIsEnabled
     );
 
+    List<Product> getAllProduct();
 
 
 

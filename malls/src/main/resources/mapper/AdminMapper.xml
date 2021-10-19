@@ -9,13 +9,27 @@
             <if test="adminName!='' and adminName!=null">
                 and adminName=#{adminName}
             </if>
-            <if test="adminPwd!='' and adminPwd!=null">
+            <if test="adminPassword!='' and adminPassword!=null">
                 and adminPwd=#{adminPwd}
-            </if>
-
-            <if test="adminId!='' and adminId!=null">
-                and adminId=#{adminId}
             </if>
         </where>
     </select>
+    <update id="updateAdmin" parameterType="com.kgc.pojo.Admin">
+    update admin
+        <set>
+            <if test="adminName !=null and adminName!=''">
+                adminName=#{adminName},
+            </if>
+            <if test="adminNickname!=null and adminNickname!=''">
+                adminNickname=#{adminNickname}
+            </if>
+            <if test="adminPassword!=null and adminPassword!=''">
+                adminPassword=#{adminPassword}
+            </if>
+            <if test="adminProfilePictureSrc!=null and adminProfilePictureSrc!=''">
+                adminProfilePictureSrc=#{adminProfilePictureSrc}
+            </if>
+        </set>
+        where adminId=#{adminId}
+    </update>
 </mapper>

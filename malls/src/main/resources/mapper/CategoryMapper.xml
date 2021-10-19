@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.mapper.CategoryMapper">
+<select id="getCateoryList" resultMap="getProductThing">
+  select * from category as ca
+  left join product as pr
+  on pr.productCategoryId=ca.categoryId
+</select>
+    <resultMap id="getProductThing" type="com.kgc.pojo.Category">
+        <id property="categoryId" column="categoryId"></id>
+        <collection property="productList" ofType="com.kgc.pojo.Product">
+            <id property="productId" column="productId"></id>
+        </collection>
+    </resultMap>
+</mapper>
