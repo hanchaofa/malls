@@ -1,6 +1,7 @@
 package com.kgc.service.fore;
 
 import com.kgc.pojo.Product;
+import com.kgc.pojo.Property;
 
 import java.util.List;
 
@@ -9,7 +10,14 @@ import java.util.List;
  */
 public interface ProductService {
     /**
-     * 查询6条促销商品信息
+     * 获取产品参数
+     * @param productId 商品编号
+     * @return 商品参数集合
+     */
+    List<Property> getPropertyList(Integer productId);
+
+    /**
+     * 获取促销商品列表
      * @return 商品集合
      */
     List<Product> getPromotingProductList();
@@ -30,8 +38,8 @@ public interface ProductService {
 
     /**
      * 商品详情查询
-     * @param id 商品编号
+     * @param productId 商品编号
      * @return 商品对象
      */
-    Product getProductById(Integer id);
+    Product getProductDetail(Integer productId);
 }

@@ -2,6 +2,7 @@ package com.kgc.service.fore.impl;
 
 import com.kgc.mapper.fore.ProductMapper;
 import com.kgc.pojo.Product;
+import com.kgc.pojo.Property;
 import com.kgc.service.fore.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,11 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Resource
     ProductMapper productMapper;
+
+    @Override
+    public List<Property> getPropertyList(Integer productId) {
+        return productMapper.getPropertyList(productId);
+    }
 
     @Override
     public List<Product> getPromotingProductList() {
@@ -32,7 +38,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(Integer id) {
-        return null;
+    public Product getProductDetail(Integer productId) {
+        // 获取商品详情
+        Product productDetail = productMapper.getProductDetail(productId);
+        // 获取预览图片列表
+        productDetail.setSingleProductImageList(productMapper.getSingleProductImageList(productId));
+        // 获取详情图片列表
+        productDetail.setDetailProductImageList(productMapper.getDetailProductImageList(productId));
+        // 获取评论列表
+        productDetail.setReviewList(productMapper.getReviewList(productId));
+        return productDetail;
     }
 }

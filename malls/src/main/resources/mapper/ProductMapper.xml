@@ -3,6 +3,100 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.mapper.fore.ProductMapper">
+    <!-- 商品对象映射 -->
+    <resultMap id="productMap" type="com.kgc.pojo.Product">
+        <id column="productId" property="productId"/>
+        <result column="productName" property="productName"/>
+        <result column="productTitle" property="productTitle"/>
+        <result column="productPrice" property="productPrice"/>
+        <result column="productSalePrice" property="productSalePrice"/>
+        <result column="productCreateDate" property="productCreateDate"/>
+        <result column="productIsEnabled" property="productIsEnabled"/>
+        <result column="productSaleCount" property="productSaleCount"/>
+        <result column="productReviewCount" property="productReviewCount"/>
+        <association property="productCategory" javaType="com.kgc.pojo.Category">
+            <id column="categoryId" property="categoryId"/>
+            <result column="categoryName" property="categoryName"/>
+            <result column="categoryImageSrc" property="categoryImageSrc"/>
+        </association>
+    </resultMap>
+
+    <!-- 评论对象映射 -->
+    <resultMap id="reviewMap" type="com.kgc.pojo.Review">
+        <id column="reviewId" property="reviewId"/>
+        <result column="reviewContent" property="reviewContent"/>
+        <result column="reviewCreatedate" property="reviewCreatedate"/>
+        <result column="reviewProductId" property="reviewProductId"/>
+        <result column="reviewOrderItemId" property="reviewOrderItemId"/>
+        <association property="reviewUser" javaType="com.kgc.pojo.User">
+            <id column="userId" property="userId"/>
+            <result column="userName" property="userName"/>
+            <result column="userNickName" property="userNickName"/>
+            <result column="userPassword" property="userPassword"/>
+            <result column="userRealname" property="userRealname"/>
+            <result column="userGender" property="userGender"/>
+            <result column="userBirthday" property="userBirthday"/>
+            <result column="userAddress" property="userAddress"/>
+            <result column="userHomePlace" property="userHomePlace"/>
+            <result column="userProfilePictureSrc" property="userProfilePictureSrc"/>
+        </association>
+    </resultMap>
+
+    <!-- 产品参数对象映射 -->
+    <resultMap id="propertyMap" type="com.kgc.pojo.Property">
+        <id column="propertyId" property="propertyId"/>
+        <result column="propertyName" property="propertyName"/>
+        <result column="propertyCategoryId" property="propertyCategoryId"/>
+        <result column="propertyValueValue" property="propertyValue"/>
+    </resultMap>
+
+    <!-- 获取产品参数 -->
+    <select id="getPropertyList" resultMap="propertyMap">
+        select * from property
+        inner join propertyvalue
+        on propertyvalue.propertyValuePropertyId=property.propertyId
+        where propertyvalue.propertyValueProductId=#{productId}
+    </select>
+
+    <!-- 获取详情图片列表 -->
+    <select id="getDetailProductImageList" resultType="com.kgc.pojo.Productimage">
+        select * from productimage
+        where productimageProductId=#{productId}
+        and productimageType=1
+    </select>
+
+    <!-- 获取预览图片列表 -->
+    <select id="getSingleProductImageList" resultType="com.kgc.pojo.Productimage">
+        select * from productimage
+        where productimageProductId=#{productId}
+        and productimageType=0
+    </select>
+
+    <!-- 获取商品评论列表 -->
+    <select id="getReviewList" resultMap="reviewMap">
+        select *
+        from review
+        inner join `user`
+        on review.reviewUserId=`user`.userId
+        where review.reviewProductId=#{productId}
+    </select>
+
+    <!-- 获取商品详情 -->
+    <select id="getProductDetail" resultMap="productMap">
+        select *,sum(productorderitem.productorderitemNumber) as productSaleCount,
+        count(review.reviewId) as productReviewCount
+        from product
+        inner join category
+        on product.productCategoryId=category.categoryId
+        inner join productorderitem
+        on productorderitem.productorderitemProductId=product.productId
+        inner join review
+        on review.reviewProductId=product.productId
+        where product.productId=#{productId}
+        group by product.productId
+    </select>
+
+    <!-- 获取促销商品列表 -->
     <select id="getPromotingProductList" resultType="com.kgc.pojo.Product">
         select * from product where productIsEnabled=2 limit 6
     </select>
