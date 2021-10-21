@@ -22,6 +22,7 @@ public class ProductController {
     public String AllProductList(Model model,String productName){
         List<Product> list = productMapper.getAllProduct(productName,null);
         model.addAttribute("productList",list);
+
         return "/page/fore/productListPage";
     }
 

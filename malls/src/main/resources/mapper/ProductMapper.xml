@@ -3,22 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.mapper.ProductMapper">
-  <select id="getAllProduct" resultMap="getProduct">
-    select * from product as pr inner join category as ct on ct.categoryId=pr.productCategoryId
-    <where>
-      <if test="productName!=null and productName!=''">
-        productName like concat('%',#{productName},'%')
-      </if>
-      <if test="productCategoryId!=null and productCategoryId!=''">
-       and  productCategoryId=#{productCategoryId}
-      </if>
-        and productIsEnabled in (0,2)
-    </where>
-  </select>
-  <resultMap id="getProduct" type="com.kgc.pojo.Product">
-    <result column="productId" property="productId"></result>
-    <collection property="productCategory" ofType="com.kgc.pojo.Category">
-      <result column="categoryId" property="categoryId"></result>
-    </collection>
-  </resultMap>
+<select id="getPromotion" resultType="com.kgc.pojo.Product">
+  SELECT * FROM product
+  WHERE productIsEnabled=2 LIMIT 6
+</select>
 </mapper>

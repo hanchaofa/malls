@@ -20,8 +20,13 @@ public interface UserService {
      * @param userId
      * @return
      */
-    User getUser(Integer userId);
+    User getUser(Integer userId,String userName,String userPassword);
 
-
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    Integer getAddUser(User user);
 
 }

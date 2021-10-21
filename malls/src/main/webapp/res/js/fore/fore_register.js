@@ -162,7 +162,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",
-            url: contextPath + "/register/doRegister",
+            url: contextPath + "/User/doRegister",
             data: {
                 "userName": userName,
                 "userPassword": userPassword,
@@ -180,7 +180,7 @@ $(function () {
                         $(".msg").animate({
                             opacity: 0
                         }, 1500, function () {
-                            location.href = contextPath + "/login";
+                            location.href = contextPath + "/User/login";
                         });
                     });
                 } else {

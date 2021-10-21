@@ -16,4 +16,5 @@ public class Product {
     private Integer productIsEnabled;
     private List<Productimage> singleProductImageList;
     private Category productCategory;
+    private String productSrc;
 }

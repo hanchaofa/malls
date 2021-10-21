@@ -56,5 +56,10 @@ public interface ProductService {
             ,String productimageSrc,Integer productimageType
             ,Integer productId,Integer propertyValueId,Object...productIsEnabled);
 
+    /**
+     * 前台获取促销的商品，进行轮播展示
+     * @return
+     */
+    List<Product> getPromotion();
 
 }

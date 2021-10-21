@@ -18,7 +18,7 @@ $(function () {
         $(this).attr("data-status", "ajaxShow");
         $.ajax({
             type: "GET",
-            url: contextPath + "/product/nav/" + $(this).attr("data-toggle"),
+            url: contextPath + "/Product/nav/" + $(this).attr("data-toggle"),
             data: null,
             dataType: "json",
             success: function (data) {

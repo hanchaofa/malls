@@ -29,4 +29,9 @@ public class ProductServiceImpl implements ProductService {
     public Integer AddProduct(String productName, String productTitle, float productPrice, float productSalePrice, Integer productCategoryId, String productimageSrc, Integer productimageType, Integer productId, Integer propertyValueId, Object... productIsEnabled) {
         return null;
     }
+
+    @Override
+    public List<Product> getPromotion() {
+        return productMapper.getPromotion();
+    }
 }

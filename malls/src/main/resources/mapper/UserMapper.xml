@@ -3,5 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.mapper.UserMapper">
-
+<insert id="getAddUser" parameterType="com.kgc.pojo.User">
+    insert into user(userId,userName,userNickName,userPassword,userGender,userBirthday,userAddress,userHomePlace)
+    values(null ,#{userName},#{userNickName},#{userPassword},#{userGender},#{userBirthday},#{userAddress},'130000')
+</insert>
+    <select id="getUser" resultType="com.kgc.pojo.User">
+    select * from user
+    <where>
+        <if test="userId!=null and userId!=''">
+            userId=#{userId}
+        </if>
+        <if test="userName!=null and userName!=''">
+          and  userName=#{userName}
+        </if>
+        <if test="userPassword!=null and userPassword!=''">
+           and userPassword=#{userPassword}
+        </if>
+    </where>
+    </select>
 </mapper>
