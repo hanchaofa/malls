@@ -18,11 +18,11 @@ public interface AddressMapper {
      * 获取市级
      * @return
      */
-    List<Address> getShi(@Param("addressRegionId") Integer addressRegionId);
+    List<Address> getShi(Integer addressRegionId);
 
     /**
      * 获取县区级
      * @return
      */
-    List<Address> getQu(@Param("addressRegionId") Integer addressRegionId);
+    List<Address> getQu(Integer addressRegionId);
 }

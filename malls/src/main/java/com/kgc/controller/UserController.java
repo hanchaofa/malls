@@ -39,9 +39,10 @@ public class UserController {
     public Map<String,Object> getregisterByOtr(@PathVariable("addressRegionId")Integer addressRegionId){
         Map<String,Object> map=new HashMap<>();
         List<Address> shi = addressService.getShi(addressRegionId);
-        List<Address> qu = addressService.getQu(addressRegionId);
+        List<Address> qu =addressService.getQu(addressRegionId);
         map.put("addressList",shi);
         map.put("childAddressList",qu);
+        map.put("success","true");
         return map;
     }
 }
