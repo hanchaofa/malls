@@ -24,9 +24,9 @@
                 </c:when>
                 <c:otherwise>
                     <em>Hi，</em>
-                    <a href="${ctx}/userDetails" class="userName"
+                    <a href="${ctx}/User/userDetails" class="userName"
                        target="_blank">${sessionScope.user.userName}</a>
-                    <a href="${ctx}/login/logout">退出</a>
+                    <a href="${ctx}/User/logout">退出</a>
                 </c:otherwise>
             </c:choose>
         </p>
@@ -35,7 +35,7 @@
                 <div class="sn_menu">
                     <a href="${ctx}/User/userDetails">我的Mall<b></b></a>
                     <div class="quick_menu">
-                        <a href="${ctx}/order/0/10">已买到的宝贝</a>
+                        <a href="${ctx}/User/order/0/10">已买到的宝贝</a>
                         <a href="#">已卖出的宝贝</a>
                     </div>
                 </div>

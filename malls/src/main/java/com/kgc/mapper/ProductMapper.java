@@ -16,4 +16,11 @@ public interface ProductMapper {
          * @return
          */
         List<Product> getPromotion();
+
+        /**
+         * 前台搜索
+         * @param productName
+         * @return
+         */
+        List<Product> getProduct(@Param("productName")String productName);
 }

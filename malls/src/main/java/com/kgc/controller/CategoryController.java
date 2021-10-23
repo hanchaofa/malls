@@ -1,5 +1,6 @@
 package com.kgc.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.kgc.mapper.CategoryMapper;
 import com.kgc.pojo.Category;
 import com.kgc.pojo.Product;
@@ -9,6 +10,7 @@ import com.kgc.service.impl.CategoryServiceImpl;
 import com.kgc.service.impl.ProductServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,11 +35,20 @@ public class CategoryController {
         model.addAttribute("specialProductList",promotion);
         return "/page/fore/homePage";
     }
-    @RequestMapping("/nav/{toggle}")
+    @GetMapping(value = "/nav/{toggle}",produces = {"application/json;charset=utf-8"})
     @ResponseBody
-    public Map<String,Object> getNav(@PathVariable("toggle")Integer tog){
+    public String getNav(@PathVariable("toggle")Integer tog){
+        List<Category> list = categoryService.getCateoryList();
         Map<String,Object> map=new HashMap<>();
-
-        return map;
+        Category category=new Category();
+       for(int i=0;i<list.size();i++){
+            if(list.get(i).getCategoryId()==tog){
+                list.get(i).setProductList(productService.getAllProduct(null,tog));
+                category=list.get(i);
+            }
+       }
+        map.put("category",category);
+        map.put("success",true);
+        return JSON.toJSONString(map);
     }
 }

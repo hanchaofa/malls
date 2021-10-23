@@ -34,4 +34,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getPromotion() {
         return productMapper.getPromotion();
     }
+
+    @Override
+    public List<Product> getProduct(String productName) {
+        return productMapper.getProduct(productName);
+    }
 }

@@ -30,4 +30,11 @@ public interface CategoryService {
 
     Integer updateCateory(Category category);
 
+    /**
+     * 根据分类找分类的类型集合
+     * @param categoryId
+     * @return
+     */
+    Category getCatList(Integer categoryId);
+
 }

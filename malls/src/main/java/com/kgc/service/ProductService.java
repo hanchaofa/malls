@@ -3,6 +3,7 @@ package com.kgc.service;
 import com.kgc.mapper.ProductMapper;
 import com.kgc.pojo.Product;
 import com.kgc.tool.PageUtil;
+import org.apache.ibatis.annotations.Param;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -61,5 +62,12 @@ public interface ProductService {
      * @return
      */
     List<Product> getPromotion();
+
+    /**
+     * 前台搜索
+     * @param productName
+     * @return
+     */
+    List<Product> getProduct(String productName);
 
 }

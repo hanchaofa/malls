@@ -17,4 +17,6 @@ public class Product {
     private List<Productimage> singleProductImageList;
     private Category productCategory;
     private String productSrc;
+    private Integer productSaleCount;
+    private Integer productReviewCount;
 }

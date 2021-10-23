@@ -41,7 +41,7 @@ public class UserController {
     public Map<String,Object> getregisterByOtr(@PathVariable("addressRegionId")Integer addressRegionId){
         Map<String,Object> map=new HashMap<>();
         List<Address> shi = addressService.getShi(addressRegionId);
-        List<Address> qu =addressService.getQu(shi.get(0).getAddressAreaId());
+        List<Address> qu =addressService.getQu(Integer.parseInt(shi.get(0).getAddressAreaId()));
         map.put("addressList",shi);
         map.put("childAddressList",qu);
         map.put("success","true");
@@ -80,10 +80,30 @@ public class UserController {
     public String userDetails(HttpSession session,Model model){
         User user=(User)session.getAttribute("user");
         if(user!=null){
+            String userAddress = user.getUserAddress().substring(0,2);
+            String userAddress2=user.getUserAddress().substring(0,4);
+            System.out.println(userAddress);
+            String subStrings="0000";
+            List<Address> list = addressService.getSheng();
+            System.out.println(userAddress+subStrings);
+            List<Address> shi = addressService.getShi(Integer.parseInt(userAddress+subStrings));
+            List<Address> qu = addressService.getQu(Integer.parseInt(shi.get(0).getAddressAreaId()));
+            model.addAttribute("districtAddressId",user.getUserAddress());
+            model.addAttribute("addressId",Integer.parseInt(userAddress+subStrings));
+            model.addAttribute("cityAddressId",Integer.parseInt(userAddress2+"00"));
+            model.addAttribute("districtAddressId",user.getUserAddress());
+            model.addAttribute("addressList",list);
+            model.addAttribute("cityList",shi);
+            model.addAttribute("districtList",qu);
             model.addAttribute("user",user);
             return "/page/fore/userDetails";
         }else{
             return "/page/fore/loginPage";
         }
+    }
+    @RequestMapping("/logout")
+    public String getLogout(HttpSession session){
+        session.removeAttribute("user");
+        return "/page/fore/loginPage";
     }
 }

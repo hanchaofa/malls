@@ -18,27 +18,26 @@ $(function () {
         $(this).attr("data-status", "ajaxShow");
         $.ajax({
             type: "GET",
-            url: contextPath + "/Product/nav/" + $(this).attr("data-toggle"),
+            url: contextPath + "/Category/nav/" + $(this).attr("data-toggle"),
             data: null,
             dataType: "json",
             success: function (data) {
                 if (data.success) {
-                    var list = data.category.complexProductList;
+                    var list = data.category.productList;
+                    div.append("<div class='hot_word'></div>");
+                    var hot_word_div = div.children(".hot_word").last();
                     for (var i = 0; i < list.length; i++) {
                         if (list[i].length === 0) {
                             continue;
                         }
-                        div.append("<div class='hot_word'></div>");
-                        var hot_word_div = div.children(".hot_word").last();
-                        for (var j = 0; j < list[i].length; j++) {
-                            var productTitle = list[i][j].productTitle;
+
+                            var productTitle = list[i].productTitle;
                             var index = productTitle.indexOf(' ');
                             if (index !== -1) {
                                 productTitle = productTitle.substring(0, index);
                             }
-                            hot_word_div.append("<a href='product/" + list[i][j].productId + "'>" + productTitle + "</a>");
+                            hot_word_div.append("<a href='product/" + list[i].productId + "'>" + productTitle + "</a>");
                         }
-                    }
                     //热词样式
                     div.find("a").each(function () {
                         var random = parseInt(Math.random() * 10);

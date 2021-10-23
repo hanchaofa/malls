@@ -8,4 +8,10 @@ import java.util.List;
 @Mapper
 public interface CategoryMapper {
     List<Category> getCateoryList();
+    /**
+     * 根据分类找分类的类型集合
+     * @param categoryId
+     * @return
+     */
+    Category getCatList(Integer categoryId);
 }

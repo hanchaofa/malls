@@ -28,4 +28,11 @@ public interface ProductorderService {
      * @return
      */
     Product getProductorder(Integer productId);
+
+    /**
+     * 通过商品ID获取商品卖出量
+     * @param ProductId
+     * @return
+     */
+    Integer getNumber(Integer ProductId);
 }

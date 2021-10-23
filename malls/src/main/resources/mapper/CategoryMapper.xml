@@ -6,5 +6,14 @@
 <select id="getCateoryList" resultType="com.kgc.pojo.Category">
   select * from category
 </select>
-
+<select id="getCatList" resultMap="getCatThing">
+SELECT * FROM category AS cy left JOIN product AS pt ON pt.productCategoryId=cy.categoryId
+WHERE cy.categoryId=#{categoryId}
+</select>
+  <resultMap id="getCatThing" type="com.kgc.pojo.Category">
+    <id property="categoryId" column="categoryId"></id>
+    <collection property="productList" ofType="com.kgc.pojo.Product">
+      <id property="productId" column="productId"></id>
+    </collection>
+  </resultMap>
 </mapper>

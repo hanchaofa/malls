@@ -7,4 +7,23 @@
   SELECT * FROM product
   WHERE productIsEnabled=2 LIMIT 6
 </select>
+  <select id="getAllProduct" resultType="com.kgc.pojo.Product">
+  select * from product
+  <where>
+    <if test="productName!=null and productName!=''">
+      productName=#{productName}
+    </if>
+    <if test="productCategoryId!=null and productCategoryId!='' and productCategoryId!=-1">
+      productCategoryId=#{productCategoryId}
+    </if>
+  </where>
+</select>
+  <select id="getProduct" resultType="com.kgc.pojo.Product">
+    select * from product
+    <where>
+      <if test="productName!=null and productName!=''">
+        productName like concat('%',#{productName},'%')
+      </if>
+    </where>
+  </select>
 </mapper>
