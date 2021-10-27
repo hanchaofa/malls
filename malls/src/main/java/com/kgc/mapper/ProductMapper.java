@@ -29,4 +29,10 @@ public interface ProductMapper {
          * @return
          */
         List<Product> getPageByCate(Integer productCategoryId);
+        /**
+         * 根据商品productId，获取商品详细信息（前台）
+         * @param productId
+         * @return
+         */
+        Product getProductById(Integer productId);
 }

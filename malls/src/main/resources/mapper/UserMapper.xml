@@ -8,17 +8,20 @@
     values(null ,#{userName},#{userNickName},#{userPassword},#{userGender},#{userBirthday},#{userAddress},'130000')
 </insert>
     <select id="getUser" resultType="com.kgc.pojo.User">
-    select * from user
-    <where>
-        <if test="userId!=null and userId!=''">
-            userId=#{userId}
-        </if>
-        <if test="userName!=null and userName!=''">
-          and  userName=#{userName}
-        </if>
-        <if test="userPassword!=null and userPassword!=''">
-           and userPassword=#{userPassword}
-        </if>
-    </where>
+        select * from user
+        <where>
+            <if test="userId!=null and userId!=''">
+                userId=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+              and  userName=#{userName}
+            </if>
+            <if test="userPassword!=null and userPassword!=''">
+               and userPassword=#{userPassword}
+            </if>
+        </where>
+    </select>
+    <select id="getRewiwById" resultType="com.kgc.pojo.User">
+        select * from user where userId=#{userId}
     </select>
 </mapper>

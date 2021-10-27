@@ -93,13 +93,13 @@
                     </div>
                     <a href="${ctx}/product?categoryId=${category.categoryId}"><img
                             class="banner_goods_show"
-                            src="${pageContext.request.contextPath}res/images/fore/WebsiteImage/show/${category.categoryId}.jpg"></a>
+                            src="${pageContext.request.contextPath}/res/images/fore/WebsiteImage/show/${category.categoryId}.jpg"></a>
                     <div class="banner_goods_items">
                         <c:forEach items="${category.productList}" var="product" varStatus="i">
                             <c:if test="${i.index<8}">
                                 <div class="banner_goods_item">
                                     <a href="product/${product.productId}" class="goods_link"></a>
-                                    <img src="${ctx}/res/images/item/productSinglePicture/${product.singleProductImageList[0].productImageSrc}">
+                                    <img src="${ctx}/res/images/item/productSinglePicture/${product.singleProductImageList[0].productimageSrc}">
                                     <a href="product/${product.productId}"
                                        class="goods_name">${product.productName}</a>
                                     <span class="goods_price">￥${product.productSalePrice}</span>

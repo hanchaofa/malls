@@ -69,8 +69,19 @@ public class UserController {
         }else{
             return "false";
         }
-
-
+    }
+    @PostMapping("/doLogin2")
+    @ResponseBody
+    public Map<String,Object> getToLogin(String username, String password, HttpSession session){
+        Map<String,Object> map = new HashMap<>();
+        User user = userService.getUser(null, username, password);
+        session.setAttribute("user",user);
+        if(user!=null){
+            map.put("success",true);
+        }else{
+            map.put("success",false);
+        }
+        return map;
     }
     @RequestMapping("/homePage")
     public String getHomePage(){

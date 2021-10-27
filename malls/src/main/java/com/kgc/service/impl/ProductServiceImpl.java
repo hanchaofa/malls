@@ -45,4 +45,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getPageByCate(Integer productCategoryId) {
         return productMapper.getPageByCate(productCategoryId);
     }
+
+    @Override
+    public Product getProductById(Integer productId) {
+        return productMapper.getProductById(productId);
+    }
 }

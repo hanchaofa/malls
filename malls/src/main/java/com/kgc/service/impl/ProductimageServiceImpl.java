@@ -23,5 +23,10 @@ public class ProductimageServiceImpl implements ProductimageService {
         return productimageMapper.getPImage(productimageProductId);
     }
 
+    @Override
+    public List<Productimage> getAllImg(Integer productimageProductId) {
+        return productimageMapper.getAllImg(productimageProductId);
+    }
+
 
 }

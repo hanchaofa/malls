@@ -38,8 +38,10 @@ public class CategoryController {
         List<Product> promotion = productService.getPromotion();
         for(int i=0;i<list.size();i++){
             List<Product> products = productService.getPageByCate(list.get(i).getCategoryId());
-           /* List<Productimage> pImage = productimageService.getPImage(products.get(i).getProductId());
-            products.get(i).setSingleProductImageList(pImage);*/
+           for(int j=0;j<products.size();j++){
+               List<Productimage> pImage = productimageService.getPImage(products.get(j).getProductId());
+               products.get(j).setSingleProductImageList(pImage);
+           }
             list.get(i).setProductList(products);
         }
         model.addAttribute("categoryList",list);

@@ -15,5 +15,11 @@ public interface ProductimageMapper {
      */
 
     List<Productimage> getPImage(Integer productimageProductId);
+    /**
+     * 获取全部图片，通过商品的ID
+     * @param productimageProductId
+     * @return
+     */
+    List<Productimage> getAllImg(Integer productimageProductId);
 
 }

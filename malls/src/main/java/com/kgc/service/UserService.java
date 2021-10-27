@@ -3,6 +3,8 @@ package com.kgc.service;
 import com.kgc.pojo.User;
 import com.kgc.tool.PageUtil;
 
+import java.util.List;
+
 public interface UserService {
     /**
      * 用户分页列表展示
@@ -29,4 +31,10 @@ public interface UserService {
      */
     Integer getAddUser(User user);
 
+    /**
+     * 根据用户ID，获取评论人的名字
+     * @param userId
+     * @return
+     */
+    List<User> getRewiwById(Integer userId);
 }

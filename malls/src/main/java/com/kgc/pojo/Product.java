@@ -19,4 +19,6 @@ public class Product {
     private String productSrc;
     private Integer productSaleCount;
     private Integer productReviewCount;
+    private List<Review> reviewList;
+    private List<Productimage> detailProductImageList;
 }

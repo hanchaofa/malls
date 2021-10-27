@@ -7,6 +7,7 @@ import com.kgc.tool.PageUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,5 +27,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer getAddUser(User user) {
         return userMapper.getAddUser(user);
+    }
+
+    @Override
+    public List<User> getRewiwById(Integer userId) {
+        return userMapper.getRewiwById(userId);
     }
 }

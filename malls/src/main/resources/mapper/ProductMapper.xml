@@ -37,4 +37,9 @@
     SELECT * FROM product WHERE productCategoryId=#{productCategoryId} AND productIsEnabled IN(0,2)
 ORDER BY productId DESC LIMIT 8
 </select>
+
+
+  <select id="getProductById" resultType="com.kgc.pojo.Product">
+    select * from product where productId=#{productId}
+  </select>
 </mapper>

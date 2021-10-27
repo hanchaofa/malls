@@ -1,5 +1,6 @@
 package com.kgc.service;
 
+import com.kgc.pojo.Product;
 import com.kgc.pojo.Property;
 
 import java.util.List;
@@ -12,5 +13,10 @@ public interface PropertyService {
      */
     List<Property> getProperty(Integer propertyCategoryId);
     Integer AddProperty(Integer propertyCategoryId);
-
+    /**
+     * 根据商品的类型，获取属性
+     * @param propertyCategoryId
+     * @return
+     */
+    List<Property> getAllProperty(Integer propertyCategoryId);
 }
