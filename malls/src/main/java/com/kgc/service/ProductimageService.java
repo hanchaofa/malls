@@ -11,9 +11,10 @@ public interface ProductimageService {
     Integer AddImage(Productimage productimage);
 
     /**
-     * 获取当前商品ID下的所有信息
+     * 获取图片，通过商品的ID
      * @param productimageProductId
      * @return
      */
-    List<Productimage> getAllImg(Integer productimageProductId);
+    List<Productimage> getPImage(Integer productimageProductId);
+
 }

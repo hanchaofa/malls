@@ -18,12 +18,23 @@
     </if>
   </where>
 </select>
-  <select id="getProduct" resultType="com.kgc.pojo.Product">
-    select * from product
+  <select id="getProduct" resultMap="getProductAndImg">
+    SELECT * FROM product AS pt INNER JOIN productimage AS pm ON pm.productimageProductId=pt.productId
     <where>
       <if test="productName!=null and productName!=''">
         productName like concat('%',#{productName},'%')
       </if>
     </where>
+
   </select>
+  <resultMap id="getProductAndImg" type="com.kgc.pojo.Product">
+    <id column="productId" property="productId"></id>
+    <collection property="singleProductImageList" ofType="com.kgc.pojo.Productimage">
+      <id property="productimageId" column="productimageId"></id>
+    </collection>
+  </resultMap>
+  <select id="getPageByCate" resultType="com.kgc.pojo.Product">
+    SELECT * FROM product WHERE productCategoryId=#{productCategoryId} AND productIsEnabled IN(0,2)
+ORDER BY productId DESC LIMIT 8
+</select>
 </mapper>

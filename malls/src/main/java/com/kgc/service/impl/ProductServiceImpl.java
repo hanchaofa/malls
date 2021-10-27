@@ -2,6 +2,7 @@ package com.kgc.service.impl;
 
 import com.kgc.mapper.ProductMapper;
 import com.kgc.pojo.Product;
+import com.kgc.pojo.Productimage;
 import com.kgc.service.ProductService;
 import com.kgc.tool.PageUtil;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProduct(String productName) {
         return productMapper.getProduct(productName);
+    }
+
+    @Override
+    public List<Product> getPageByCate(Integer productCategoryId) {
+        return productMapper.getPageByCate(productCategoryId);
     }
 }

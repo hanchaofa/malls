@@ -4,10 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.kgc.mapper.CategoryMapper;
 import com.kgc.pojo.Category;
 import com.kgc.pojo.Product;
+import com.kgc.pojo.Productimage;
 import com.kgc.service.CategoryService;
 import com.kgc.service.ProductService;
+import com.kgc.service.ProductimageService;
 import com.kgc.service.impl.CategoryServiceImpl;
 import com.kgc.service.impl.ProductServiceImpl;
+import com.kgc.service.impl.ProductimageServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +30,18 @@ public class CategoryController {
     CategoryServiceImpl categoryService;
     @Resource
     ProductServiceImpl productService;
+    @Resource
+    ProductimageServiceImpl productimageService;
     @RequestMapping("/getCategory")
     public String getCateoryAll(Model model){
         List<Category> list = categoryService.getCateoryList();
         List<Product> promotion = productService.getPromotion();
+        for(int i=0;i<list.size();i++){
+            List<Product> products = productService.getPageByCate(list.get(i).getCategoryId());
+           /* List<Productimage> pImage = productimageService.getPImage(products.get(i).getProductId());
+            products.get(i).setSingleProductImageList(pImage);*/
+            list.get(i).setProductList(products);
+        }
         model.addAttribute("categoryList",list);
         model.addAttribute("specialProductList",promotion);
         return "/page/fore/homePage";

@@ -2,6 +2,7 @@ package com.kgc.service;
 
 import com.kgc.mapper.ProductMapper;
 import com.kgc.pojo.Product;
+import com.kgc.pojo.Productimage;
 import com.kgc.tool.PageUtil;
 import org.apache.ibatis.annotations.Param;
 
@@ -69,5 +70,11 @@ public interface ProductService {
      * @return
      */
     List<Product> getProduct(String productName);
+    /**
+     * 获取商品类型下的商品
+     * @param productCategoryId
+     * @return
+     */
+    List<Product> getPageByCate(Integer productCategoryId);
 
 }
