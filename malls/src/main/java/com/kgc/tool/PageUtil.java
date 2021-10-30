@@ -10,7 +10,6 @@ public class PageUtil<T> {
     private Integer pageSize;
     private Integer totalCount;
     private List<T> list;
-
     public Integer getTotalCount() {
         return totalCount;
     }

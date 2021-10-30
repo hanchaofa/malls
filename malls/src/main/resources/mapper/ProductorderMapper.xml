@@ -4,6 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgc.mapper.ProductorderMapper">
     <select id="getNumber" resultType="int">
-    SELECT COUNT(productorderitemNumber) FROM productorderitem WHERE productorderitemProductId=#{ProductId}
+    SELECT COUNT(productorderitemNumber) FROM productorderitem WHERE productorderitemProductId=#{ProductId} and productorderitemOrderId IS not NULL
+    </select>
+    <select id="getOrderForPage" resultType="com.kgc.pojo.Productorder">
+      SELECT * FROM productorder
+      <where>
+          <if test="status!=null and status!=''">
+              productorderStatus=#{status}
+          </if>
+          and productorderUserId=#{productorderUserId}
+      </where>
+        limit #{pageIndex},#{pageSize}
+    </select>
+    <select id="getProductorderCount" resultType="int">
+        SELECT count(*) FROM productorder
+        <where>
+            <if test="status!=null and status!=''">
+                productorderStatus=#{status}
+            </if>
+            and productorderUserId=#{productorderUserId}
+        </where>
     </select>
 </mapper>

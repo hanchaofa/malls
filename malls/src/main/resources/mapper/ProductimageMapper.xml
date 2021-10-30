@@ -9,4 +9,7 @@
     <select id="getAllImg" resultType="com.kgc.pojo.Productimage">
         SELECT * FROM productimage WHERE  productimageProductId=#{productimageProductId} AND productimageType=0
     </select>
+    <select id="getOneImage" resultType="com.kgc.pojo.Productimage">
+    SELECT * FROM productimage  WHERE productimageProductId=#{productimageProductId} AND productimageType=0 LIMIT 1
+</select>
 </mapper>

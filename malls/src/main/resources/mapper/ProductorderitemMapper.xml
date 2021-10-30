@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.mapper.ProductorderitemMapper">
+    <insert id="AddProductOrderitem" parameterType="com.kgc.pojo.Productorderitem">
+        INSERT INTO productorderitem(
+        productorderitemId,productorderitemNumber, productorderitemPrice,
+        productorderitemProductId,productorderitemOrderId, productorderitemUserId,
+        productorderitemUserMessage)
+        VALUES(NULL,#{productorderitemNumber},#{productorderitemPrice},
+        #{productorderitemProductId},null, #{productorderitemUserId},null)
+    </insert>
+    <select id="getProductOrderitem" resultType="com.kgc.pojo.Productorderitem">
+    SELECT * FROM productorderitem WHERE productorderitemOrderId IS NULL AND productorderitemuserId=#{productorderitemuserId}
+    </select>
+    <update id="UpProductOrderitem">
+        UPDATE productorderitem SET productorderitemNumber = productorderitemNumber + #{product_number}
+        WHERE productorderitemProductId=#{productorderitemProductId}
+        AND productorderitemUserId=#{productorderitemuserId}
+        AND productorderitemOrderId IS NULL
+    </update>
+    <delete id="DelProductOrder" parameterType="Integer">
+       DELETE FROM productorderitem WHERE productorderitemOrderId IS NULL AND productorderitemProductId=#{productorderitemProductId}
+    </delete>
+    <select id="getProdctOrderItemById" resultType="com.kgc.pojo.Productorderitem">
+      SELECT * FROM productorderitem WHERE productorderitemOrderId=#{productorderitemOrderId}
+    </select>
+</mapper>

@@ -195,7 +195,7 @@
                             location.reload();
                         } else {
                             $.ajax({
-                                url: "${ctx}/orderItem/create/${requestScope.product.productId}?product_number=" + $.trim($(".context_buymember").val()),
+                                url: "${ctx}/Productorder/create/${requestScope.product.productId}?product_number=" + $.trim($(".context_buymember").val()),
                                 type: "POST",
                                 data: {"product_number": number},
                                 dataType: "json",

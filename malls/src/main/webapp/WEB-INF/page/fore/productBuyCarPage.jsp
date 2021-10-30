@@ -12,12 +12,11 @@
         $(function () {
             $('#btn-ok').click(function () {
                 $.ajax({
-                    url: "${ctx}/orderItem/" + $("#order_id_hidden").val(),
+                    url: "${ctx}/Productorder/DelorderItem/" + $("#order_id_hidden").val(),
                     type: "DELETE",
-                    data: null,
                     dataType: "json",
                     success: function (data) {
-                        if (data.success !== true) {
+                        if (data.success != true) {
                            alert("购物车商品删除异常,请稍后再试");
                         }
                         location.href = data.href;
@@ -125,32 +124,32 @@
                     </tr>
                     <tr class="orderItem_info">
                         <td class="tbody_checkbox"><input type="checkbox" class="cbx_select"
-                                                          id="cbx_orderItem_select_${orderItem.productOrderItemId}"
+                                                          id="cbx_orderItem_select_${orderItem.productorderitemId}"
                                                           name="orderItem_id"><label
-                                for="cbx_orderItem_select_${orderItem.productOrderItemId}"></label></td>
+                                for="cbx_orderItem_select_${orderItem.productorderitemId}"></label></td>
                         <td><img class="orderItem_product_image"
-                                 src="${ctx}/res/images/item/productSinglePicture/${orderItem.productOrderItemProduct.singleProductImageList[0].productImageSrc}"
+                                 src="${ctx}/res/images/item/productSinglePicture/${orderItem.productOrderItemProduct.singleProductImageList[0].productimageSrc}"
                                  style="width: 80px;height: 80px;"/><span class="orderItem_product_name"><a
                                 href="${ctx}/product/${orderItem.productOrderItemProduct.productId}">${orderItem.productOrderItemProduct.productName}</a></span>
                         </td>
                         <td><span
-                                class="orderItem_product_price">￥${orderItem.productOrderItemPrice/orderItem.productOrderItemNumber}</span>
+                                class="orderItem_product_price">￥${orderItem.productorderitemPrice}</span>
                         </td>
                         <td>
                             <div class="item_amount">
                                 <a href="javascript:void(0)" onclick="up(this)"
-                                   class="J_Minus <c:if test="${orderItem.productOrderItemNumber<=1}">no_minus</c:if>">-</a>
-                                <input type="text" value="${orderItem.productOrderItemNumber}"/>
+                                   class="J_Minus <c:if test="${orderItem.productorderitemNumber<=1}">no_minus</c:if>">-</a>
+                                <input type="text" value="${orderItem.productorderitemNumber}"/>
                                 <a href="javascript:void(0)" onclick="down(this)" class="J_Plus">+</a>
                             </div>
                         </td>
                         <td>
-                            <span class="orderItem_product_realPrice">￥${orderItem.productOrderItemPrice}</span>
+                            <span class="orderItem_product_realPrice">￥${orderItem.productorderitemPrice*orderItem.productorderitemNumber}</span>
                         </td>
-                        <td><a href="javascript:void(0)" onclick="removeItem('${orderItem.productOrderItemId}')"
+                        <td><a href="javascript:void(0)" onclick="removeItem(${orderItem.productorderitemId})"
                                class="remove_order">删除</a></td>
                         <td>
-                            <input type="hidden" class="input_orderItem" name="${orderItem.productOrderItemId}"/>
+                            <input type="hidden" class="input_orderItem" name="${orderItem.productorderitemId}"/>
                         </td>
                     </tr>
                 </c:forEach>

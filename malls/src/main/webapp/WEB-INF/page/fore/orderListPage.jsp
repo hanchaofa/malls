@@ -45,7 +45,7 @@
             if (name === undefined) {
                 name = "";
             }
-            location.href = "${ctx}/order/" + index + "/10" + "?" + name;
+            location.href = "${ctx}/Productorder/order/" + index + "/10" + "?" + name;
         }
     </script>
 </head>
@@ -78,15 +78,15 @@
 <div class="content">
     <ul class="tabs_ul">
         <li <c:if test="${requestScope.status == null}">class="tab_select"</c:if>><a
-                href="${ctx}/order/0/10">所有订单</a></li>
+                href="${ctx}/Productorder/order/0/10">所有订单</a></li>
         <li <c:if test="${requestScope.status == 0}">class="tab_select"</c:if>><a
-                href="${ctx}/order/0/10?status=0" name="status=0">待付款</a></li>
+                href="${ctx}/Productorder/order/0/10?status=0" name="status=0">待付款</a></li>
         <li <c:if test="${requestScope.status == 1}">class="tab_select"</c:if>><a
-                href="${ctx}/order/0/10?status=1" name="status=1">待发货</a></li>
+                href="${ctx}/Productorder/order/0/10?status=1" name="status=1">待发货</a></li>
         <li <c:if test="${requestScope.status == 2}">class="tab_select"</c:if>><a
-                href="${ctx}/order/0/10?status=2" name="status=2">待收货</a></li>
+                href="${ctx}/Productorder/order/0/10?status=2" name="status=2">待收货</a></li>
         <li <c:if test="${requestScope.status == 3}">class="tab_select"</c:if>><a
-                href="${ctx}/order/0/10?status=3" name="status=3">已完成</a></li>
+                href="${ctx}/Productorder/order/0/10?status=3" name="status=3">已完成</a></li>
     </ul>
     <%@include file="include/page.jsp" %>
     <table class="table_orderList">
@@ -105,29 +105,29 @@
                 <c:forEach items="${requestScope.productOrderList}" var="productOrder">
                     <tbody>
                     <tr class="tr_order_info">
-                        <td colspan="6"><span class="span_pay_date">${productOrder.productOrderPayDate}</span><span
+                        <td colspan="6"><span class="span_pay_date">${productOrder.productorderPayDate}</span><span
                                 class="span_order_code_title">订单号:</span><span
-                                class="span_order_code">${productOrder.productOrderCode}</span></td>
+                                class="span_order_code">${productOrder.productorderCode}</span></td>
                     </tr>
-                    <c:forEach items="${productOrder.productOrderItemList}" var="productOrderItem" varStatus="i">
+                    <c:forEach items="${productOrder.productorderitems}" var="productOrderItem" varStatus="i">
                         <tr class="tr_orderItem_info">
                             <td><img class="orderItem_product_image"
-                                     src="${ctx}/res/images/item/productSinglePicture/${productOrderItem.productOrderItemProduct.singleProductImageList[0].productImageSrc}"
+                                     src="${ctx}/res/images/item/productSinglePicture/${productOrderItem.productOrderItemProduct.singleProductImageList[0].productimageSrc}"
                                      style="width: 80px;height: 80px;"/><span class="orderItem_product_name"><a
                                     href="${ctx}/product/${productOrderItem.productOrderItemProduct.productId}">${productOrderItem.productOrderItemProduct.productName}</a></span>
                             </td>
                             <td><span
-                                    class="orderItem_product_price">￥${productOrderItem.productOrderItemPrice/productOrderItem.productOrderItemNumber}</span>
+                                    class="orderItem_product_price">￥${productOrderItem.productorderitemPrice}</span>
                             </td>
                             <td><span
-                                    class="orderItem_product_number">${productOrderItem.productOrderItemNumber}</span>
+                                    class="orderItem_product_number">${productOrderItem.productorderitemNumber}</span>
                             </td>
                             <td class="td_order_content"><span
-                                    class="orderItem_product_realPrice">￥${productOrderItem.productOrderItemPrice}</span>
+                                    class="orderItem_product_realPrice">￥${productOrderItem.productorderitemPrice*productOrderItem.productorderitemNumber}</span>
                             </td>
                             <c:if test="${i.count == 1}">
                                 <c:choose>
-                                    <c:when test="${productOrder.productOrderStatus==0}">
+                                    <c:when test="${productOrder.productorderStatus==0}">
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <span class="span_order_status" title="等待买家付款">等待买家付款</span>
@@ -141,7 +141,7 @@
                                             </p>
                                         </td>
                                     </c:when>
-                                    <c:when test="${productOrder.productOrderStatus==1}">
+                                    <c:when test="${productOrder.productorderStatus==1}">
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <span class="span_order_status" title="买家已付款，等待卖家发货">等待卖家发货</span>
@@ -149,10 +149,10 @@
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <a class="order_btn delivery_btn"
-                                               href="${ctx}/order/delivery/${productOrder.productOrderCode}">提醒发货</a>
+                                               href="${ctx}/order/delivery/${productOrder.productorderCode}">提醒发货</a>
                                         </td>
                                     </c:when>
-                                    <c:when test="${productOrder.productOrderStatus==2}">
+                                    <c:when test="${productOrder.productorderStatus==2}">
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <span class="span_order_status" title="卖家已发货，等待买家确认">等待买家确认</span>
@@ -160,10 +160,10 @@
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <a class="order_btn confirm_btn"
-                                               href="${ctx}/order/confirm/${productOrder.productOrderCode}">确认收货</a>
+                                               href="${ctx}/order/confirm/${productOrder.productorderCode}">确认收货</a>
                                         </td>
                                     </c:when>
-                                    <c:when test="${productOrder.productOrderStatus==3}">
+                                    <c:when test="${productOrder.productorderStatus==3}">
                                         <td class="td_order_content"
                                             rowspan="${fn:length(requestScope.productOrderItemList)}">
                                             <span class="span_order_status" title="交易成功">交易成功</span>
@@ -180,7 +180,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>
-                            <c:if test="${productOrder.productOrderStatus==3 && productOrderItem.isReview != null && !productOrderItem.isReview}">
+                            <c:if test="${productOrder.productorderStatus==3 && productOrderItem.isReview != null && !productOrderItem.isReview}">
                                 <td class="td_order_content">
                                     <a class="order_btn review_btn"
                                        href="${ctx}/review/${productOrderItem.productOrderItemId}">评价</a>

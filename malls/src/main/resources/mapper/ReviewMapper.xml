@@ -9,4 +9,7 @@
     <select id="getReivewById" resultType="com.kgc.pojo.Review">
        SELECT * FROM review WHERE reviewProductId=#{reviewProductId}
     </select>
+    <select id="isReivew" resultType="int">
+         SELECT COUNT(*) FROM review WHERE reviewOrderItemId=#{reviewOrderItemId}
+    </select>
 </mapper>

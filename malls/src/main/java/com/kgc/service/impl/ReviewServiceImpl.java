@@ -22,5 +22,16 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.getReivewById(reviewProductId);
     }
 
+    @Override
+    public Boolean isReivew(Integer reviewOrderItemId) {
+        Integer reivew = reviewMapper.isReivew(reviewOrderItemId);
+        if(reivew>0){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
 
 }

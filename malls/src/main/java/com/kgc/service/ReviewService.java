@@ -18,4 +18,11 @@ public interface ReviewService {
      * @return
      */
     List<Review> getReivewById(Integer reviewProductId);
+
+    /**
+     * 根据商品的订单id判断是否含有评论
+     * @param reviewOrderItemId
+     * @return
+     */
+    Boolean isReivew(Integer reviewOrderItemId);
 }

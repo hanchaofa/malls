@@ -22,4 +22,11 @@ public interface ProductimageService {
      * @return
      */
     List<Productimage> getAllImg(Integer productimageProductId);
+
+    /**
+     * 获取指定图片，通过商品的ID
+     * @param productimageProductId
+     * @return
+     */
+    Productimage getOneImage(Integer productimageProductId);
 }

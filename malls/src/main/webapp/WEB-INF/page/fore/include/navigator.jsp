@@ -35,14 +35,14 @@
                 <div class="sn_menu">
                     <a href="${ctx}/User/userDetails">我的Mall<b></b></a>
                     <div class="quick_menu">
-                        <a href="${ctx}/User/order/0/10">已买到的宝贝</a>
+                        <a href="${ctx}/Productorder/order/0/10">已买到的宝贝</a>
                         <a href="#">已卖出的宝贝</a>
                     </div>
                 </div>
             </li>
             <li class="quick_li_cart">
                 <img src="${ctx}/res/images/fore/WebsiteImage/buyCar.png">
-                <a href="${ctx}/cart">购物车</a>
+                <a href="${ctx}/Productorder/cart">购物车</a>
             </li>
             <li class="quick_li_menuItem">
                 <div class="sn_menu">
